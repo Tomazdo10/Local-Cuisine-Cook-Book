@@ -1,4 +1,34 @@
 {%extends "base.html"%}
 {%block content%}
-<h1>About</h1>
+
+    <h2>{{site_title}}</h2>
+    <p>
+        A cuisine is a style of cooking characterized by distinctive ingredients, techniques and dishes, and usually
+        associated with a specific culture or geographic region. Regional food preparation traditions, customs and
+        ingredients often combine to create dishes unique to a particular region.
+
+        A cuisine is primarily influenced by the ingredients that are available locally or through trade, they can even be
+        made into distinct ingredients themselves when they become popular within a region, take for example Japanese rice
+        in Japanese cuisine and New Mexico chile in New Mexican cuisine.
+    </p>
+
+    {% for local in cuisine %}
+
+    <div class="row futerrete">
+    <div class="col-md-7">
+    <h3>{{ local.cuisine }}</h3>
+    <p>
+       {{ cuisine.description }}
+    </p>
+    <div class="col-md-5">
+        <img src="{{cuisine.image_source}}" alt="" class="futerrete-image image-responsive">
+    </div>
+    </div>
+    </div>
+
+<hr class="featurette-divider">
+
+{% endfor %}
+
+
 {%endblock%}

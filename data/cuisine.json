@@ -1,0 +1,14 @@
+[
+   { "name": "Local cuisine",
+    "description": "A cuisine is a style of cooking characterized by distinctive ingredients, techniques and dishes, and usually     associated with a specific culture or geographic region. Regional food preparation traditions, customs and  ingredients often combine to create dishes unique to a particular region. A cuisine is primarily influenced by the ingredients that are available locally or through trade, they can even be     made into distinct ingredients themselves when they become popular within a region, take for example Japanese rice  in Japanese cuisine and New Mexico chile in New Mexican cuisine.",
+    "image_source": "https://i2.wp.com/photos.smugmug.com/photos/i-sqM3DmG/0/aaef2b7e/L/i-sqM3DmG-L.jpg"
+   },
+    { "name": "Trinidad & Tobago",
+    "description": " Popular breakfast foods include doubles; roti (usually sada roti[) served with a variety of curried, roasted or  fried vegetable dishes; fried bake served with saltfish, meat, or vegetable dishes; and coconut bake (coconut bread),served with a range of fillings.",
+    "image_source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/FOOD_Doubles_2.jpg/1024px-FOOD_Doubles_2.jpg"
+   },
+    { "name": "Schnitzel",
+    "description": " Although a schnitzel is more of an Austrian dish, it’s extremely popular in Germany. The Wiener Schnitzel, a cutlet  coated in breadcrumbs with cheese and ham sandwiched within, is served with green salad and potatoes.",
+    "image_source": "https://i2.wp.com/photos.smugmug.com/photos/i-sqM3DmG/0/aaef2b7e/L/i-sqM3DmG-L.jpg"
+   }
+]
