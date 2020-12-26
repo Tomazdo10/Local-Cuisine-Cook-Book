@@ -16,9 +16,11 @@
 
     <div class="row futerrete">
     <div class="col-md-7">
-    <h3>{{ local.cuisine }}</h3>
+    <h3> {{ loop.index }}. {{ local.cuisine }}</h3>
     <p>
        {{ cuisine.description }}
+
+      
     </p>
     <div class="col-md-5">
         <img src="{{cuisine.image_source}}" alt="" class="futerrete-image image-responsive">
