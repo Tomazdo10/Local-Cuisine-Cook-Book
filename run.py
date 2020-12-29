@@ -26,7 +26,7 @@ def contact():
 
 @app.route("/careers")  
 def careers():
-    return render_template("careers.html", site_title="Careers")  
+    return render_template("find_recipes.html", site_title="Find_Recipes")  
 
 
 if __name__ == "__main__":

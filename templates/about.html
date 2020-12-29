@@ -15,6 +15,9 @@
     {% for local in cuisine %}
 
     <div class="row futerrete">
+
+        { if loop.index % 2 != 0%}
+
     <div class="col-md-7">
     <h3> {{ loop.index }}. {{ local.cuisine }}</h3>
     <p>
@@ -25,10 +28,13 @@
     <div class="col-md-5">
         <img src="{{cuisine.image_source}}" alt="" class="futerrete-image image-responsive">
     </div>
+    {% endif %}
     </div>
-    </div>
+{% if loop.index != loop.length }
 
-<hr class="featurette-divider">
+    <hr class="featurette-divider">
+
+{% endif %}
 
 {% endfor %}
 
