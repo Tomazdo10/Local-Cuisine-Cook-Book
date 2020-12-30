@@ -20,7 +20,7 @@
                     {% if recipe.image_url %}
                     <img src="{{recipe.img_url}}" class="rounded recipe-img" alt="Img of Recipe">
                     {% else %}
-                    <img src="{{url_for('static', filename='img/default-img.jpg')}}" class="rounded recipe-img"
+                    <img src="{{url_for('static', filename = 'img/default-img.jpg')}}" class="rounded recipe-img"
                         alt="default-img of chef" />
                     {% endif %}
                 </div>
@@ -32,7 +32,7 @@
                     <p><em>Date: {{recipe.posted_date}}</em></p>
                 </div>
                 <div class="col s12 m2 left-align btn-links">
-                    <a href="{{ url_for('view_search_result', recipe_id=recipe._id)}}"
+                    <a href="{{ url_for('view_search_result', recipe_id = recipe._id)}}"
                         class="waves-effect wasves-light btn">View Recipe</a>
               
                 </div>

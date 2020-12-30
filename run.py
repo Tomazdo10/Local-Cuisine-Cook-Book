@@ -33,12 +33,50 @@ def contact():
 
 
 @app.route("/find_recipes")  
-def careers():
+def find_recipes():
     return render_template("find_recipes.html", site_title="Find_Recipes")  
+
+# Search for recipe    
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    search = request.form["search"]
+    print(search)
+
+    recipe = mongo.db.recipe.find({"recipe_name":
+                                  {"$regex": search, '$options': 'i'}})
+    recipesName = mongo.db.recipe.find({"recipe_name":
+                                       {"$regex": search, '$options': 'i'}}).count()
+
+    print (recipesName)
+    ingredients = mongo.db.recipe.find({"ingredients":
+                                        {"$regex": search,
+                                        '$options': 'i'}})
+
+    ingredientsName = mongo.db.recipe.find({"ingredients":
+                                        {"$regex": search,
+                                        '$options': 'i'}}).count()
+
+    print(ingredientsName)
+    return render_template("search.html",
+                            recipe = recipe,
+                            ingredients = ingredients,
+                            recipesName = recipesName,
+                            ingredientsName = ingredientsName,
+                            )                       
+#Recipe Results
+@app.route("/view_search_result/<recipe_id>", method=["GET"])
+def view_search_result(recipe_id):
+    recipe = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    ingredients = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("full_recipe.html",
+                           recipe=recipe, ingredients=ingredients)
+
+
 
 
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "0.0.0.0"),
         port=int(os.environ.get("PORT", "5000")),
-        debug=True)
+        debug=False)
