@@ -1,9 +1,13 @@
 import os
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, request, flash
+if os.path.exists("env.py"):
+   import env
 
+#Flask app
 
 app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET KEY')
 
 
 @app.route("/")
@@ -19,12 +23,16 @@ def about():
     return render_template("about.html", site_title="About", cuisine=data)
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        print(request.form["email"])
+        flash("Thanks{} we have recived your message!".format(
+            request.form.get("name")))
     return render_template("contact.html", site_title="Contact")
 
 
-@app.route("/careers")  
+@app.route("/find_recipes")  
 def careers():
     return render_template("find_recipes.html", site_title="Find_Recipes")  
 
