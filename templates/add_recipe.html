@@ -10,7 +10,34 @@
                 <h2 class="text-grey-50 mx-auto mt-2 mb-5">
                     Use the form below to create a new recipe.
                 </h2>
+                <a class="btn btn-primary js-scroll-trigger" href="#create-recipe">Create Recipe</a>
             </div>
         </div>
     </div>
 </header>
+<section class="form-section background-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+            <h3 class="text-center pt-5 mb-4 text-jet" id="create-recipe">Add Recipe</h3>
+            <hr class="about hr--color" />
+        </div>
+        <div class="col-12">
+            <form id="add-recipe" name="add-recipe" class="pt-5 pb-5">
+                <div class="form-group row text-center">
+                    <div class="col-12">
+                        <label for="recipe_name" class="text-jet">Recipe Name</label>
+                </div>
+                <div class="col-12">
+                    <input class="contact-form-input form-control contact-form-input style"
+                    type="text" 
+                    id="recipe_name"
+                    placeholder="Your name of recipe"
+                    required
+                    />
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
