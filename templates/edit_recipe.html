@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+        <div class="col-12">
+            <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 tetx-uppercase">
+                    Edit Recipe Here
+                </h1>
+                <h2 class="text-grey-40 mx-auto mt-2 mb-5">
+                    Use the form to select and edit your recipe.
+                </h2>
+                <a class="btn btn-primary js-scroll-trigger" href="#edit-recipe">Edit Recipe</a>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="form-section-background--color">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h4 class="text-center pt-5 mb-4 text-jet">Edit Recipe</h4>
+                <hr class="about-hr--color">
+            </div>
+            <div class="col-12">
+                <form
+                class="pt-5 pb-5"
+                id="edit-recipe"
+                name="edit-recipe"
+                method="POST"
+                action="{{ url_for('update_recipe', recipe_id=user_recipe._id)}}">
+                
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
