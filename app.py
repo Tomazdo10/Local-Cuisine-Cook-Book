@@ -2,38 +2,28 @@ import os
 from flask import Flask, render_template, url_for,  request, flash, \
         request, session, redirect, jsonify
 from flask_pymongo import PyMongo
+import math
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from os import path
 if os.path.exists("env.py"):
     import env
 
-    #Flask app
+#Database
+app = Flask(__name__)
+app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
+mongo = PyMongo(app)
+app.config['MONGO_DBNAME'] = os.getenv('MONGO_DBNAME')
+app.config['MONGO_URI'] = os.getenv('MONGO_URI')
+app.secret_key = os.environ.get('SECRET KEY')
 
-    app = Flask(__name__)
-    app.config["MONGO_DBNAME"] = 'Recipe'
-    app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-    app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
-    app.secret_key = os.environ.get('SECRET KEY')
+users = mongo.db.user_login_system
+recipes = mongo.db.recipes
 
-    mongo = PyMongo(app)
-
-    #Decorators
-def prevent_misuse(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return f(*args, **kwargs)
-        else:
-            return redirect(url_for('home_paige')) 
-
-            return wrap
-
-@app.route("/")
+@app.route('/')
 @app.route('/home/')
-@prevent_misuse
 def home_paige():
-    return render_template("/index.html")
+    return render_template('index.html')
 
 @app.route("/about")
 def about():
@@ -65,7 +55,19 @@ def about():
     @login_required
     def insert_recipe():
         user = User()
-        return user.insert_recipe()      
+        return user.insert_recipe()   
+
+
+        #Decorators       
+def prevent_misuse(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            return redirect(url_for('home_paige')) 
+
+            return wrap       
 
     # Search for recipe    
 
@@ -102,6 +104,7 @@ def about():
         ingredients = mongo.db.recipe.find_one({"_id": ObjectId(recipe_id)})
         return render_template("full_recipe.html",
                             recipe=recipe, ingredients=ingredients)
+
 if __name__ == "__main__":
      app.run(
             host=os.environ.get("IP", "0.0.0.0"),
