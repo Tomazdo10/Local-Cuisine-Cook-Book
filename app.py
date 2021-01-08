@@ -21,8 +21,8 @@ users = mongo.db.user_login_system
 recipes = mongo.db.recipes
 
 @app.route('/')
-@app.route('/home/')
-def home_paige():
+@app.route('/index')
+def index():
     return render_template('index.html')
 
 @app.route("/about")
@@ -31,7 +31,6 @@ def about():
     with open("data/cuisine.json", "r") as json_data:
         data = json.load (json_data)
         return render_template("about.html", site_title="About", cuisine=data)
-
 
     @app.route("/contact", methods=["GET", "POST"])
     def contact():
@@ -105,8 +104,13 @@ def prevent_misuse(f):
         return render_template("full_recipe.html",
                             recipe=recipe, ingredients=ingredients)
 
+    @app.errorhandler(404)
+    def error_404(error):
+     return render_template('errors/404.html', error=True,
+                            title='Paige not found'), 404
+
 if __name__ == "__main__":
      app.run(
             host=os.environ.get("IP", "0.0.0.0"),
             port=int(os.environ.get("PORT", "5000")),
-            debug=False)
+            debug=True)

@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/clean-blog.min.css')}}" type="text/css">
      <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" type="text/css">
+     {% elif error %}
+     <link rel="stylesheet" type="text/css"
+     href="{{ url_for ('static', filename='css/background_errors.css')}}">
+     {% endif %}
+
     <title>Local Cuisine Cook Book</title>
 </head>
 <body>
@@ -19,22 +24,19 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
              <li class="nav-item">
-            <a class="nav-link" href= "{{url_for('index') }}">Home</a>
+            <a class="nav-link" href= "{{url_for ('index') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href= "{{url_for('home') }}">Home</a>
+            <a class="nav-link" href= "{{url_for ('about') }}">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href= "{{url_for('about') }}">About</a>
+            <a class="nav-link" href= "{{url_for ('contact') }}">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href= "{{url_for('contact') }}">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href= "{{url_for('search') }}">Search</a>
+            <a class="nav-link" href= "{{url_for ('search') }}">Search</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link" href= "{{url_for('login') }}">Login</a>
+            <a class="nav-link" href= "{{url_for ('login') }}">Login</a>
           </li>
         </ul>
       </div>
