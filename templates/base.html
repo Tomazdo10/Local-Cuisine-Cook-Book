@@ -42,13 +42,28 @@
           </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href= "{{url_for ('contact_page') }}">Contact</a>
+            <a class="nav-link" href= "{{url_for ('recipes_page') }}">Recipes</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">About</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{url_for('about_page')}}">About</a>
+                  <a class="dropdown-item" href="{{url_for('contact_page')}}">Contact Us</a>
+              </div>
+
           </li>
           <li class="nav-item">
-            <a class="nav-link" href= "{{url_for ('search_data') }}">Search</a>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link" href= "{{url_for ('login') }}">Login</a>
+              {% if session['logged_in'] == True %}
+           <a class="btn btn-sm btn-primary text-capitalize nav-btn" href="{{url_for('sign_out')}}" role="button">Sign Out</a>
+           {% else %}
+           <a class="btn btn-sm btn-primary text-capitalize nav-btn" href="{{url_for('login_page')}}" role="button">Log In</a>
+           {% endif %}
           </li>
         </ul>
       </div>
@@ -71,18 +86,26 @@
   </header>
 
   <!-- Main Content -->
-  <div class="container">
+
     {% block content %}
     {% endblock %}
-  </div>
-
-  <hr>
-
   <!-- Footer -->
-  <footer>
+  <footer class="footer-small">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-12 col-lg-6 text-center text-lg-center">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="list-style-none p-0 justify-content-center">
+                        <li>
+                            <a href="{{url_for('about_page')}}" class="text-gainsboro">About</a>
+                        </li>
+                        <li>
+                            <a href="{{url_for('contact_page')}}" class="text-gainsboro">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
           <ul class="list-inline text-center">
             <li class="list-inline-item">
               <a href="#">
