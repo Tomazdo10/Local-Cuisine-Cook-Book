@@ -49,10 +49,49 @@ the format looks like and enable users to have recipes ready available while the
 It also encourage othe users to create a free account and share their recipes of their own.
 
 ### User Stories
---------------------
+------------------------------------------------------------------------------------------------
 
 ### New External User Goals
  
  * As a new user i want to be able to view recipes.
  * As a new user i want to be able to register and post my own recipes and serch for existing ones.
  
+ ### Frequent User Goals
+ ------------------------------------------------------------------------------------------------
+  * As a frequent user i want to be able to continue to share my recipes in an easy way.
+  * As a user i want to be able to find new reecipes from others users and see who posted them.
+  * As an user i want to share my recipes to social media pages.
+
+  ### Returning External User Goals:
+  -----------------------------------------------------------------------------------------------
+   * As a returning user i want to be able to edit and update my posted recipes.
+   * As a returning user i want to be able to delete my posted recipes.
+
+   ### Site Owner User Goals
+
+   * As the site owner and developer i want to push my current learning skills to another level and 
+   make a site that's useful and beneficial for other users.
+
+   ### Wireframes
+   -----------------------------------------------------------------------------------------------
+   Using the user stories , I put together the wireframes for the Local Cuisine Cook Book using Balsamiq.
+   The Wireframes coverd desktop, tablet and mobile formats.
+
+   ### Changes in Wireframes?????
+
+   * 
+   * 
+   *  
+
+   ### Scope
+   ------------------------------------------------------------------------------------------------
+
+    * The user can find a recipes to cook themselves.
+    * The user can register to the website.
+    * The user can submit their own recipes to the website.
+    * The user can delete and edit the recipe on the website.
+    * The user can search for the recipes and find some they would like to try themselfs to cook.
+
+    ## Existing Website Features
+    ---------------------------------------------------------------------------------------------
+    
