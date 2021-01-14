@@ -120,7 +120,7 @@ def prevent_misuse(f):
     return wrap
 
 
-# Routes
+
 @app.route('/')
 @app.route('/home/')
 @prevent_misuse
