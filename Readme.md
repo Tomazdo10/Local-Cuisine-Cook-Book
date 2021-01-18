@@ -86,16 +86,65 @@ It also encourage othe users to create a free account and share their recipes of
    ### Scope
    ------------------------------------------------------------------------------------------------
 
-    *  The user can find a recipes to cook themselves.
-    *  The user can register to the website.
-    *  The user can submit their own recipes to the website.
-    *  The user can delete and edit the recipe on the website.
-    *  The user can search for the recipes and find some they would like to try themselfs to cook.
+*  The user can find a recipes to cook themselves.
+
+* The user can register to the website.
+
+* The user can submit their own recipes to the website.
+
+* The user can delete and edit the recipe on the website.
+
+* The user can search for the recipes and find some they would like to try themselfs to cook.
 
     ## Existing Website Features
     ---------------------------------------------------------------------------------------------
-    NAVIGATION BAR: Allows users to navigate to the relevant section on the website, such as log in/log out
-    they can add the recipes, find a recipe and user profile page where they can see their username, links to
-    home paige and add paige.
+       NAVIGATION BAR: Allows users to navigate to the relevant section on the website, such as log in/log out
+       they can add the recipes, find a recipe and user profile page where they can see their username, links to
+       home paige and add paige.
 
-    REGISTER: 
+    
+       EDIT RECIPE BUTTON: User will be able to edit their own recipe when he/she is sign in by clickong on the      
+       edit button, but they will not be able to edit recipes from other users.      
+
+       LOGIN: User can Log In to their accounts simply by using username and password form. Once they are logged     
+       in users with the help of MongoDB can add, edit or delete the recepies as well as search for recipes added by other users.      
+
+       REGISTER: The register section will allow users to register to a website so they can add, edit or delite     
+       recipes as well share them with others and search for recipes added from other users, first they will need     
+       to fill up the form with a username and password which they can use it every time they will logged in.      
+
+       THE ABILITY TO UPLOAD THE IMAGE: User will be able to upload the image with the recipe via Add recipe     
+       and Edit Recipe form by including the URL to the image.      
+
+       SEARCH BAR: Allows users to input the text that is used for search, display and query recipes to the users.     
+       Search bar function is created using the JavaScript ajax method to send and recieve data.      
+
+      EmailJS: The Website has available form where users can use it to send us the email.This was set with      
+      using the EmailJS [https://www.emailjs.com/] service. The user will need to fill up three forms "Full Name",     
+      "Email" and "Message" once everything is filled, the user can send us na email by clicking on a send buttonwhich uses      
+      the EmailJS service to send us the email.
+
+
+Features Left to Implement
+----------------------------------------------
+
+ * Ability for users to upload a profile image
+ * Developing system that will allow users to create
+   group folders to create and storage the recipes there together.
+* Create a function to download or storage other people recipes.
+
+## Technologies Used for Developing
+
+* Bootstrap [https://getbootstrap.com/]
+   * The project website is using Bootstrap to provide the responsive toolkit for building the base of the website.
+
+* Flask [https://www.fullstackpython.com/flask.html]
+   * The project website is using Flask framework to provide the tools for developer that Allows
+     to build a website aplication faster.
+
+* Font Awesome [https://fontawesome.com/]
+   * The project website is using font awesome to use the icons for the website.
+
+*           
+
+
