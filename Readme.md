@@ -86,7 +86,6 @@ It also encourage othe users to create a free account and share their recipes of
    ### Scope
    ------------------------------------------------------------------------------------------------
 
-<<<<<<< HEAD
 *  The user can find a recipes to cook themselves.
 
 * The user can register to the website.
@@ -144,30 +143,57 @@ Features Left to Implement
      to build a website aplication faster.
 
 * Font Awesome [https://fontawesome.com/]
-   * The project website is using font awesome to use the icons for the website.
+   * The project is using font awesome to use the icons for the website.
 
-*           
+*  GitHub [https://github.com/Github]     
+   * The project is using GitHub for version control.
 
+* Python [https://www.python.org/]       
+   * The project is using Python for routing and CRUD function.
 
-<<<<<<< HEAD
-=======
-    EDIT RECIPE BUTTON: User will be able to edit their own recipe when he/she is sign in by clickong on the      
-    edit button, but they will not be able to edit recipes from other users.      
-    
-    LOGIN: User can Log In to their accounts simply by using username and password form. Once they are logged     
-    in users with the help of MongoDB can add, edit or delete the recepies as well as search for recipes added by other users.      
-    
-    REGISTER: The register section will allow users to register to a website so they can add, edit or delite     
-    recipes as well share them with others and search for recipes added from other users, first they will need     
-    to fill up the form with a username and password which they can use it every time they will logged in.      
-    
-    THE ABILITY TO UPLOAD THE IMAGE: User will be able to upload the image with the recipe via Add recipe     
-    and Edit Recipe form by including the URL to the image.      
-    
-    SEARCH BAR: Allows users to input the text that is used for search, display and query recipes to the users.     
-    Search bar function is created using the JavaScript ajax method to send and recieve data.      
-    
-    EmailJS: The Website has available form where users can use it to send us the email.This was set with      
-    using the EmailJS [https://www.emailjs.com/] service. The user will need to fill up three forms "Full Name",     
-    "Email" and "Message" once everything is filled, the user can send us na email by clicking on a send buttonwhich uses      
-    the EmailJS service to send us the email.
+* Heroku [https://dashboard.heroku.com/apps]
+   * The project is using Heroku to deploy finished project.
+
+* EmaiJS [https://www.emailjs.com/]
+   * The project is using EmailJS for sending emails from website.
+
+* MongoDB-Atlas [https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=bing&utm_campaign=bs_emea_united_kingdom_search_brand_atlas_desktop&utm_term=mongodb%20atlas&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=386028215&msclkid=47a6a9a906941a57c371c9af0c6a75d5]         
+   * The project is using MongoDB-Atlas to store the data on this website
+
+* JQuery [https://jquery.com/]
+  * The project is using JQuery to simplify the DOM manipulation.
+
+* Google Fonts [https://fonts.google.com/]   
+  * The project uses the Google Fonts to changing the font-famaly.
+
+## Scheme Design
+-------------------------------------------------------------------------------------
+* After the research for the elements of the website and the items needed to be stored 
+  I've retrive it from database for two collections:
+
+   * Users: for register and login they contain the Object ID, Username and Password.
+
+   * Recipes: contains the element required for CRUD (create,read,update and delete).
+    The values for the recipe collection are added into the database and pulled from the 
+    database by users in the section AddRecipe,EditRecipe and ViewRecipe and also for delete
+    the recipe from database.
+
+#### Users: 
+  * _id: to be able to find the user by assigning a uniq id.
+
+  * username: where the username would like to be recognized as posting and editing the recipe to the site.
+
+  * Password: The password for user to be able to login to the website.  
+
+#### Recipes:
+  * _id: Unique identifier for the recipe
+
+  * Find_recipe: The search bar where user can find others users upload recipes
+
+  *  recipe_name: The recipe name the user gives to the recipe.
+
+  * image_url: a url to be suplied by user to add the image to their recipe.
+
+  * ingredient_amount: where user can add amount and description of the recipe.
+
+  * step_description: where user can describe the recipe step by step how to use it.       
