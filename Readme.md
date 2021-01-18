@@ -86,6 +86,7 @@ It also encourage othe users to create a free account and share their recipes of
    ### Scope
    ------------------------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 *  The user can find a recipes to cook themselves.
 
 * The user can register to the website.
@@ -170,4 +171,3 @@ Features Left to Implement
     using the EmailJS [https://www.emailjs.com/] service. The user will need to fill up three forms "Full Name",     
     "Email" and "Message" once everything is filled, the user can send us na email by clicking on a send buttonwhich uses      
     the EmailJS service to send us the email.
->>>>>>> 10e3e7ffe7b1fbe3173fff4327c735835201d7b3
