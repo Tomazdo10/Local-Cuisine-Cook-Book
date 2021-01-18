@@ -1,7 +1,7 @@
 $("document").ready(function(){
 let srcForm = $("form[name=search-form]");
 let recipesRow = $("#recipe-display-row");
-let loade = $("#loader");
+let loader = $("#loader");
 
 srcForm.submit(function(event){
     let data = srcForm.serialize();
@@ -54,5 +54,5 @@ srcForm.submit(function(event){
     });
 
     event.preventDefault();
-})
-})
+});
+});

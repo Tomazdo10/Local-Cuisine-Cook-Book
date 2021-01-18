@@ -86,12 +86,16 @@ It also encourage othe users to create a free account and share their recipes of
    ### Scope
    ------------------------------------------------------------------------------------------------
 
-    * The user can find a recipes to cook themselves.
-    * The user can register to the website.
-    * The user can submit their own recipes to the website.
-    * The user can delete and edit the recipe on the website.
-    * The user can search for the recipes and find some they would like to try themselfs to cook.
+    *  The user can find a recipes to cook themselves.
+    *  The user can register to the website.
+    *  The user can submit their own recipes to the website.
+    *  The user can delete and edit the recipe on the website.
+    *  The user can search for the recipes and find some they would like to try themselfs to cook.
 
     ## Existing Website Features
     ---------------------------------------------------------------------------------------------
-    
+    NAVIGATION BAR: Allows users to navigate to the relevant section on the website, such as log in/log out
+    they can add the recipes, find a recipe and user profile page where they can see their username, links to
+    home paige and add paige.
+
+    REGISTER: 

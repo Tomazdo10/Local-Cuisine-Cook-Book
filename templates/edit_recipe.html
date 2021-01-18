@@ -22,16 +22,23 @@
                 <hr class="about-hr--color">
             </div>
             <div class="col-12">
-                <form class="pt-5 pb-5" id="edit-recipe" name="edit-recipe" method="POST"
-                    action="{{ url_for('update_recipe', recipe_id=user_recipe._id)}}">
+                <form class="pt-5 pb-5" 
+                      id="edit-recipe" 
+                      name="edit-recipe" 
+                      method="POST"
+                      action="{{ url_for('update_recipe', recipe_id=user_recipe._id)}}">
                     <div class="form-group row text-center">
                         <div class="col-12">
                             <label for="recipe_name" class="text-jet">Recipe Name</label>
                         </div>
                         <div class="col-12">
-                            <input class="contact-form-input form-control contact-form-input--style" type="text"
-                                id="recipe_name" name="recipe_name" placeholder="Your recipe name"
-                                value="{{user_recipe.recipe_name}}" required />
+                            <input class="contact-form-input form-control contact-form-input--style" 
+                                   type="text"
+                                   id="recipe_name" 
+                                   name="recipe_name" 
+                                   placeholder="Your recipe name"
+                                   value="{{user_recipe.recipe_name}}" 
+                                   required />
                         </div>
                     </div>
                     <div class="form-group row text-center">
@@ -39,9 +46,13 @@
                             <label for="img_url" class="text-jet">Image</label>
                         </div>
                         <div class="col-12">
-                            <input class="contact-form-input form-control contact-form-input--style" type="text"
-                                id="img_url" name="img_url" placeholder="Your image URL goes here"
-                                value="{{user_recipe.img_url}}" required />
+                            <input class="contact-form-input form-control contact-form-input--style" 
+                                   type="text"
+                                   id="img_url" 
+                                   name="img_url" 
+                                   placeholder="Your image URL goes here"
+                                   value="{{user_recipe.img_url}}" 
+                                   required />
                         </div>
                     </div>
                     <div class="form-group row mt-4 text-center">
@@ -55,18 +66,29 @@
                         <div class="col-11 remove{{loop.index}}">
                             <div class="row">
                                 <div class="col-lg-8 col-12 mt-3 mt-sm-2">
-                                    <input class="contact-form-input form-control contact-form-input--style" type="text"
-                                        id="ingredient_name" name="ingredient_name" placeholder="Ingredient name"
-                                        required value="{{ingredient[0]}}" />
+                                    <input class="contact-form-input form-control contact-form-input--style" 
+                                           type="text"
+                                           id="ingredient_name" 
+                                           name="ingredient_name" 
+                                           placeholder="Ingredient name"
+                                           required value="{{ingredient[0]}}" />
                                 </div>
                                 <div class="col-6 col-lg-2 mx-auto mt-3 mt-sm-2">
-                                    <input class="contact-form-input form-control contact-form-input--style" type="text"
-                                        id="ingredient_amount" name="ingredient_amount" placeholder="Amount" required
-                                        value="{{ingredient[1]}}" />
+                                    <input class="contact-form-input form-control contact-form-input--style" 
+                                           type="text"
+                                           id="ingredient_amount" 
+                                           name="ingredient_amount" 
+                                           placeholder="Amount" 
+                                           required
+                                           value="{{ingredient[1]}}" />
                                 </div>
                                 <div class="col-6 col-lg-2 mx-auto mt-3 mt-sm-2">
-                                    <input class="form-control recipe-form-input--style" type="text" id="unit"
-                                        name="unit" placeholder="Unit" required value="{{ingredient[2]}}" />
+                                    <input class="form-control recipe-form-input--style"  
+                                           type="text" 
+                                           id="unit"
+                                           name="unit" 
+                                           placeholder="Unit" 
+                                           required value="{{ingredient[2]}}" />
                                 </div>
                             </div>
                         </div>
