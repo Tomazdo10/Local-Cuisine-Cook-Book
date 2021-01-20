@@ -193,12 +193,27 @@ Features Left to Implement
 
   * step_description: where user can describe the recipe step by step how to use it.       
 
-  ## Testing
-  ---------------------------------------------------------------------------------------
 
-  * Defensive Design
-    * Submition with blank input is not allowed messages are displayed ti inform users which necessary input sections are empty.
+##Tools Used
+----------------------------------------------------------------------------------------
+* [Balsamiq wireframes](https://balsamiq.com/index.html)- To create my wireframes, showing the position of elements on varying screen sizes.
+
+* [W3C HTML Validator](https://validator.w3.org/#validate_by_input) I used it to check my validity of the HTML code.
+
+* [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) Iused this tool to check my validity of the CSS code.
+
+* [Autoprefixed](https://autoprefixer.github.io/) I used this tool to check my prefixes of my CSS code.
+
+* [PEP8](http://pep8online.com/) Used this tool to check my app.py file meets the PEP8 requirements.
+
+## Testing
+---------------------------------------------------------------------------------------------------------------
+* Defensive Design
+
+    * Submition with blank input is not allowed messages are displayed to inform users which necessary input sections are empty.
 
     * Misuse of the URL is prevented by using session and decorator functions, if the user is logged in or logged out.
+----------------------------------------------------------------------------------------------------------------------------------
+[W3C HTML Validator](https://validator.w3.org/#validate_by_input) I've used this tool to check if my app.py code complied with PEP8 requirements:
 
-    * It is not supposed to be present
+First test found [2-Errors](http://pep8online.com/checkresult)

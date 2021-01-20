@@ -98,6 +98,7 @@ app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 users = mongo.db.user_login_system
 recipes = mongo.db.recipes
 
+
 # Decorators
 def login_required(f):
     @wraps(f)
@@ -119,7 +120,6 @@ def prevent_misuse(f):
             return f(*args, **kwargs)
 
     return wrap
-
 
 
 @app.route('/')
