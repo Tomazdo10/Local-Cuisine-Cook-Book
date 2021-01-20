@@ -77,11 +77,6 @@ It also encourage othe users to create a free account and share their recipes of
    Using the user stories , I put together the wireframes for the Local Cuisine Cook Book using Balsamiq.
    The Wireframes coverd desktop, tablet and mobile formats.
 
-   ### Changes in Wireframes?????
-
-   * 
-   * 
-   *  
 
    ### Scope
    ------------------------------------------------------------------------------------------------
@@ -135,35 +130,35 @@ Features Left to Implement
 
 ## Technologies Used for Developing
 
-* [Bootstrap] (https://getbootstrap.com/)
+* [Bootstrap](https://getbootstrap.com/)
    * The project website is using Bootstrap to provide the responsive toolkit for building the base of the website.
 
-* [Flask] (https://www.fullstackpython.com/flask.html)
+* [Flask](https://www.fullstackpython.com/flask.html)
    * The project website is using Flask framework to provide the tools for developer that Allows
      to build a website aplication faster.
 
-* [Font-Awesome] (https://fontawesome.com/)
+* [Font-Awesome](https://fontawesome.com/)
    * The project is using font awesome to use the icons for the website.
 
-*  [GitHub] (https://github.com/Github)     
+*  [GitHub](https://github.com/Github)     
    * The project is using GitHub for version control.
 
-* [Python] (https://www.python.org/)       
+* [Python](https://www.python.org/)       
    * The project is using Python for routing and CRUD function.
 
-* [Heroku] (https://dashboard.heroku.com/apps)
+* [Heroku](https://dashboard.heroku.com/apps)
    * The project is using Heroku to deploy finished project.
 
-* [EmaiJS] (https://www.emailjs.com/)
+* [EmaiJS](https://www.emailjs.com/)
    * The project is using EmailJS for sending emails from website.
 
-* [MongoDB-Atlas] (https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=bing&utm_campaign=bs_emea_united_kingdom_search_brand_atlas_desktop&utm_term=mongodb%20atlas&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=386028215&msclkid=47a6a9a906941a57c371c9af0c6a75d5)        
+* [MongoDB-Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=bing&utm_campaign=bs_emea_united_kingdom_search_brand_atlas_desktop&utm_term=mongodb%20atlas&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=386028215&msclkid=47a6a9a906941a57c371c9af0c6a75d5)        
    * The project is using MongoDB-Atlas to store the data on this website
 
-* [JQuery] (https://jquery.com/)
+* [JQuery](https://jquery.com/)
   * The project is using JQuery to simplify the DOM manipulation.
 
-* [Google-Fonts] (https://fonts.google.com/)   
+* [Google-Fonts](https://fonts.google.com/)   
   * The project uses the Google Fonts to changing the font-famaly.
 
 ## Scheme Design
@@ -200,3 +195,10 @@ Features Left to Implement
 
   ## Testing
   ---------------------------------------------------------------------------------------
+
+  * Defensive Design
+    * Submition with blank input is not allowed messages are displayed ti inform users which necessary input sections are empty.
+
+    * Misuse of the URL is prevented by using session and decorator functions, if the user is logged in or logged out.
+
+    * It is not supposed to be present

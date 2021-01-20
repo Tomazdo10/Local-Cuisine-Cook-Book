@@ -13,10 +13,16 @@
         </div>
 
         <div class="col-md-10 col-lg-8 mx-auto text-center">
-            <form class="form-inline d-flex" name="search-form" action="{{url_for('recipes_page')}}" method="POST">
+            <form class="form-inline d-flex" 
+                  name="search-form" 
+                  action="{{url_for('recipes_page')}}" 
+                  method="POST">
 
-                <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" name="search_value"
-                    type="text" placeholder="Please enter your dish name here:" />
+                <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" 
+                       id="inputEmail" 
+                       name="search_value"
+                       type="text" 
+                       placeholder="Please enter your dish name here.." />
 
                 <button class="btn btn-primary mx-auto text-capitalize" type="submit">Search</button>
             </form>
@@ -41,7 +47,7 @@
             </div>
             <div class="col-12 col-lg-4 mx-auto">
                 <i class="far fa-share-square about-icon--size text-lightgreen-grow"></i>
-                <h3 class="text-jet mb-4 mt-4 text-capitalize text-white">
+                <h3 class="text-jet mb-3 mt-3 text-capitalize text-white">
                     Share, Save and Edit the Recipe.
                 </h3>
                 <hr class="about-hr--color" />
@@ -52,7 +58,7 @@
             </div>
             <div class="col-12 col-lg-4 mx-auto">
                 <i class="fas fa-user-check about-icon--size text-black-grow"></i>
-                <h3 class="text-jet mb-4 mt-4 text-capitalize text-white">
+                <h3 class="text-jet mb-3 mt-3 text-capitalize text-white">
                     Register Now!
                 </h3>
                 <hr class="about-hr--color" />
