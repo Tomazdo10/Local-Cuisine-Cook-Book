@@ -214,6 +214,11 @@ Features Left to Implement
 
     * Misuse of the URL is prevented by using session and decorator functions, if the user is logged in or logged out.
 ----------------------------------------------------------------------------------------------------------------------------------
-[W3C HTML Validator](https://validator.w3.org/#validate_by_input) I've used this tool to check if my app.py code complied with PEP8 requirements:
+[PEP 8 Compliance](http://pep8online.com/checkresult) I've used this tool to check if my app.py code complied with PEP8 requirements:
 
-First test found [2-Errors](http://pep8online.com/checkresult)
+First test passed with no errors, which was help by Code Institute mini project guide how PEP8 works and from the actual site
+reading help me to make it thrue with no errors.
+
+[W3 CSS Validator]()
+
+
