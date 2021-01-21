@@ -219,6 +219,12 @@ Features Left to Implement
 First test passed with no errors, which was help by Code Institute mini project guide how PEP8 works and from the actual site
 reading help me to make it thrue with no errors.
 
-[W3 CSS Validator]()
+[W3 CSS Validator](https://jigsaw.w3.org/css-validator) I've used this validator to check the validity of my
+CSS code. They where no errors showed to limit coding or clashes.
+
+[W3C HTML Validator](https://validator.w3.org/) I've used this validator to check the validity on all of my HTML pages
+which is 12 of them.
+
+  * Base.html
 
 
