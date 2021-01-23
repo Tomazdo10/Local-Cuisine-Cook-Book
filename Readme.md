@@ -225,8 +225,54 @@ CSS code. They where no errors showed to limit coding or clashes.
 [W3C HTML Validator](https://validator.w3.org/) I've used this validator to check the validity on all of my HTML pages
 which is 12 of them.
 
+[JSHint Validator](https://jshint.com/) I've used this validator to check the validity on all of my 7 js codes.
+
   * For every page in HTML document showe me error for attribute href element : Illegal character in path
   segment(Bad value {{url_for('edit_recipe', recipe_id=recipe._id)}} for attribute href on element a: 
-  Illegal character in path segment: { is not allowed.).
+  Illegal character in path segment: { is not allowed.) This showed me for every page that has a {url} in it.
+
+  * About.html: Passed with no other errors.
+
+  * AddRecipe.html: Passed with no other errors.
+
+  * Contact.html: It was one error which was(<label for="full-name" class="tetx-jet">)i had to correct for to id.
+                Check it again in validator and no other errors was showed.
+
+  * EditRecipe.html: No other errors where found.
+
+  * Index.html: No othre error has been found. 
+
+  * login.html: No other error has been found.
+
+  * Logout.html: No other error has been found.
+
+  * Profile.html: No other error has been found.  
+
+  * Recipe.html: No other error has been found.
+
+  * Recipes.html: No other error has been found.
+
+  * Signup.html: No other error has been found. 
+  ----------------------------------------------------------------------------------------------------------------
+  * AddRecipe.js: It found two undefined properties ($, $ajax) and no error where found and no errors.
+
+  * EditRecipe.js: One undefined variable found ($) and no errors where found and no errors.
+
+  * Emailjs.js: One warning (Expected an assignment or function call and instead saw an expression.), and 
+                Two undefined variables found($, emaijs) and no errors.
+
+  * RecipeSearch.js: Three undefined variable found ($, $ajax and i) and no errors.              
+
+  * Script.js: One warning show (Misleading line break before '?'; readers may interpret this as an expression boundary.),
+            and one undefined variable (jQuery) and no errors where found.
+
+  * Signup.js: Two undefined variables ($, $ajax), and no errors where found.
+------------------------------------------------------------------------------------------------------------------
+  * Style.css: No errors where found:
+------------------------------------------------------------------------------------------------------------------
+  * App.py: No errors where found only one warning for (no newline at end of file) .
+
+#### User Story Testing:
+--------------------------------------------------------------------------------------------------------------
 
 

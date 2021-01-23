@@ -23,8 +23,9 @@
                 <h3 class="text-center pt-5 mb-4 text-jet" id="create-recipe">Add Recipe</h3>
                 <hr class="about hr--color" />
             </div>
+        </div>
             <div class="col-12">
-                <form id="add-recipe" name="add-recipe" class="pt-5 pb-5">
+                <form id="add-recipe" name="add-recipe" class="pt-5 pb-5"></form>
                     <div class="form-group row text-center">
                         <div class="col-12">
                             <label for="recipe_name" class="text-jet">Recipe Name</label>
@@ -53,7 +54,7 @@
                     </div>
                     <div class="form-group row mt-4 text-center">
                         <div class="col-12">
-                            <label for="email" class="text-jet">Ingredients</label>
+                            <label id="email" class="text-jet">Ingredients</label>
                         </div>
                         <div class="col-1 d-flex align-items-center">
                             <p class="mx-auto my-auto">1</p>
@@ -66,7 +67,7 @@
                                             id="ingredient_name" 
                                             name="ingredient_name" 
                                             placeholder="ingredient_name"
-                                            required \>
+                                            required >
                                 </div>
                                 <div class="col-6 col-lg-2 mt-3 mt-lg-0 mx-auto">
                                     <input class="contact-form-input form-control contact-form-input--style" 
@@ -74,7 +75,7 @@
                                             id="ingredient_amount" 
                                             name="ingredient_amount" 
                                             placeholder="ingredient_amount"
-                                            required />
+                                            required >
                                 </div>
                                 <div class="col-6 col-lg-2 mt-3 mt-lg-0 mx-auto">
                                     <input class="form-control recipe-form-input--style" 
@@ -82,7 +83,7 @@
                                             id="unit"
                                             name="unit" 
                                             placeholder="Unit" 
-                                            required />
+                                            required >
                                 </div>
                             </div>
                         </div>
@@ -92,16 +93,14 @@
                                     <i fas fa-minus-circle mt-3 mr-1></i>
                                 </div>
                                 <div>
-                                    <i class="fas fa-plus-circle mt-3 ml-1 new-ingridient-btn" id="add-ingredient">
-
-                                    </i>
+                                   <i class='fas fa-pepper-hot' style='font-size:48px;color:red' id="add-ingredient"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group mt-4 row text-center">
                         <div class="col-12">
-                            <label for="text" class="text-jet">Steps</label>
+                            <label id="text" class="text-jet">Steps</label>
                         </div>
                         <div class="col-1 d-flex align-items-center">
                             <p class="mx-auto">1</p>
@@ -113,21 +112,17 @@
                         <div class="col-12" id="step-action-container">
                             <div class="row d-flex justify-content-center">
                                 <div id="del-step" class="delete-ingredient-btn display-none">
-                                    <i class="fas fa-minus-circle mt-3mr-1"></i>
+                                  <i class='fas fa-pepper-hot' style='font-size:48px;color:red'></i>
                                 </div>
                             </div>
-                            <i class="fas fa-plus-circle mt-3 new-ingredient-btn" id="add-step"></i>
+                            <i class='fas fa-pepper-hot' style='font-size:48px;color:red' id="add-step"></i>
                         </div>
-                    </div>
-            </div>
-        </div>
+                    </div> 
+               </div>
         <div class="form-group mt-4 col-12 text-center">
             <button class="btn btn-success" type="submit">Add Recipe</button>
         </div>
-        </form>
-    </div>
-    </div>
-    </div>
+</div>
 </section>
 <template id="ingredient-template">
     <div class="col-1 d-flex align-items-center">

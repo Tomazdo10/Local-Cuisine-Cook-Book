@@ -1,112 +1,20 @@
-<!DOCTYPE html>
 {% extends 'base.html' %} {% block content %}
-<header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-            <h2 class="mx-auto my-0 text-uppercase">Welcome {{ session['user']['name'] }}
-            </h2>
-            <h3 class="text-white-50 mx-auto mt-2 mb-5">
-                You will find bellow all the recipes.
-            </h3>
-            <a class="btn btn-success js-scroll-trigger" href="#interface">Get Started</a>
-        </div>
+<!--Profile-->
+<div class="container-fluid hero-image landing-paige">
+    <div class="col s12 profile-head">
+        <h4 class="generic-text">
+            You are welcome here to create, edit or delete recipes you add to a Local Cuisine Cook.
+            Share your recepies and see what other users added to the site, enyoj and have FUN.<br>
+        </h4>
     </div>
-</header>
-<section class="recipe-crud-interface" id="interface">
-    <div class="container">
-        <div class="row text-center">
-         <div class="col-12 align-items-center">
-             <h3 class="mb-5">Click the button to add the recipe</h3>
-             <a href="{{ url_for('add_recipe') }}" class="btn btn-primary">Add Recipe</a>
-         </div>
-        </div>
+    <div class="col s12 link-text">
+        <a href="{{ url_for('index') }}" class="generic-text">Explore</a>
     </div>
-</section>
-<section class="recipe-sction">
-    <div class="container">
-        <div class="row cards">
-
-            {% for recipe in user_recipes %}
-            
-            <div class="modal fade"
-            id="Modal{{ loop.index }}"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="ModalLabel{{ loop.index }}"
-            aria-hidden="true" 
-            >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title" id="ModalLabel{{ loop.index }}">
-                        Recipe Pot
-                    </h6>
-                    <button type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body p-5">
-                    Confirm Deleting?
-                    <span class="text-capitalize">{{ recipe.recipe_name }}</span>
-                    Do you really want to delete your recipe ??
-                </div>
-                <div class="modal-footer">
-                    <button type="button"
-                    class="btn btn-secondary modal-button-padding"
-                    data-dismiss="modal">Close</button>
-                    <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
-                    class="btn btn-primary modal-button-padding">Please Confirm.</a>
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
-        <div class="col-12 col-lg-4 mb-4">
-            <div class="card w-100">
-                <img class="card-img-top card-img-top"
-                src="{{ recipe.img_url}}"
-                alt="Image of the {{ recipe.recipe_name}}"
-                />
-                <div class="card-body text-center">
-                    <div class="row">
-                        <div class="col-9 d-flex align-items-center">
-                            <h6 class="card-title text-left text-capitalize mb-0">
-                                {{ recipe.recipe_name }}
-                            </h6>
-                        </div>
-                        <div class="col-3">
-                            <a href="#collapse{{ loop.index }}"
-                            data-toggle="collapse"
-                            class="card-title toggle-info btn mb-0">
-                            <span class="left"></span>
-                            <span class="right"></span>
-                        </a>
-                        </div>
-                    </div>
-                    <div class="collapse" id="collapse{{ loop.index }}">
-                        <p class="card-text text-left mt-3">
-                            {{ recipe.step_description[0] }}
-                        </p>
-                        <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
-                            class="btn btn-success w-100 mb-1">Edit</a>
-
-                        <a class="btn w-100 mb-1 delete-recipe-btn bg-color-aqua text-white"
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#Modal{{ loop.index }}">Delete Recipe</a>
-
-                        <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}"
-                        class="btn btn-successw-100">Read More Here</a>
-                    </div>
-            </div>
-        </div>
+    <br>
+    <div class="col s12 link-text">
+        <a href="{{ url_for ('add_recipe')}}" class="generic-text">Add Yours</a>
     </div>
-    {% endfor %}
-    </div>
+    
 </div>
-    </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 {% endblock %}
