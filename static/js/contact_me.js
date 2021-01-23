@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */ 
 $(function() {
 
   $("#contactForm input,#contactForm textarea").jqBootstrapValidation({

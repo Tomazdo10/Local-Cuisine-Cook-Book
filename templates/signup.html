@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% extends 'base.html' %} {% block content %}
 <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
@@ -7,7 +8,7 @@
                 <h3 class="text-white-50 mx-auto mt-2 mb-5">
                     Sign Up and see what can Local Cuisine offer?
                 </h3>
-                <a class="btn btn-primary js-scroll-trigger" href="#SignUp">Create Account</a>
+                <a class="btn btn-success js-scroll-trigger" href="#SignUp">Create Account</a>
             </div>
         </div>
     </div>
@@ -46,11 +47,11 @@
                 </p>
             </div>
             <div class="form-group col-12 mt-4 text-center">
-                <button class="btn btn-primary" type="submit">Sign Up</button>
+                <button class="btn btn-success" type="submit">Sign Up</button>
             </div>
         </form>
     </div>
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+<script src="{{ url_for('static',filename='js/signup.js') }}"></script>
 {% endblock %}

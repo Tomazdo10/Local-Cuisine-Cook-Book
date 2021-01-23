@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */ 
 $("form[name=signup_form]").submit(function(event){
     let form =(this);
     let error = $(".error");

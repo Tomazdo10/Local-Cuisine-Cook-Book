@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */ 
 $("document").ready(function(){
     let ingCount = 1;
     let desCount = 1;

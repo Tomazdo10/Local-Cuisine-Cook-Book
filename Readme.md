@@ -225,6 +225,8 @@ CSS code. They where no errors showed to limit coding or clashes.
 [W3C HTML Validator](https://validator.w3.org/) I've used this validator to check the validity on all of my HTML pages
 which is 12 of them.
 
-  * Base.html
+  * For every page in HTML document showe me error for attribute href element : Illegal character in path
+  segment(Bad value {{url_for('edit_recipe', recipe_id=recipe._id)}} for attribute href on element a: 
+  Illegal character in path segment: { is not allowed.).
 
 

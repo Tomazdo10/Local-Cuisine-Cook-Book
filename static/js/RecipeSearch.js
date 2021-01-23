@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */ 
 $("document").ready(function(){
 let srcForm = $("form[name=search-form]");
 let recipesRow = $("#recipe-display-row");

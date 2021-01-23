@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */ 
 $('document').ready(function(){
     emailjs.init("user_OI2X9ilOsTtFTtOq5tbXy");
 
