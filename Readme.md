@@ -8,7 +8,7 @@ Local Cuisine Cook Book is a fully responsive database-backed, Flask web applica
 It is build and designed for the user's wants and needs, while ensuring that the site has a 
 user friendly and interactive design expectation.
 
-You can view the live website here:
+[You can view the live website here]()
 
 Using the CRUD('Create, Read, Update, and Delete,') model of the website has been created to provide an online recipe cook Book
 so the users can add their recipe, all they have to do is signup. Users are able to store,view,edit and delite their recipes
@@ -56,29 +56,31 @@ It also encourage othe users to create a free account and share their recipes of
  * As a new user i want to be able to view recipes.
  * As a new user i want to be able to register and post my own recipes and serch for existing ones.
  
- ### Frequent User Goals
+ ### Frequent User Goals:
  ------------------------------------------------------------------------------------------------
   * As a frequent user i want to be able to continue to share my recipes in an easy way.
   * As a user i want to be able to find new reecipes from others users and see who posted them.
   * As an user i want to share my recipes to social media pages.
 
-  ### Returning External User Goals:
+### Returning External User Goals:
   -----------------------------------------------------------------------------------------------
    * As a returning user i want to be able to edit and update my posted recipes.
    * As a returning user i want to be able to delete my posted recipes.
 
-   ### Site Owner User Goals
+### Site Owner User Goals
 
    * As the site owner and developer i want to push my current learning skills to another level and 
    make a site that's useful and beneficial for other users.
 
-   ### Wireframes
+### Wireframes
    -----------------------------------------------------------------------------------------------
-   Using the user stories , I put together the wireframes for the Local Cuisine Cook Book using Balsamiq.
-   The Wireframes coverd desktop, tablet and mobile formats.
+  * Using the user stories , I put together the wireframes for the Local Cuisine Cook Book using Balsamiq.
+    The Wireframes coverd desktop, tablet and mobile formats. You can see the images from the Balsamiq wireframe 
+    website  which i used to build my project. 
+   
 
 
-   ### Scope
+### Scope
    ------------------------------------------------------------------------------------------------
 
 *  The user can find a recipes to cook themselves.
@@ -91,7 +93,7 @@ It also encourage othe users to create a free account and share their recipes of
 
 * The user can search for the recipes and find some they would like to try themselfs to cook.
 
-    ## Existing Website Features
+## Existing Website Features
     ---------------------------------------------------------------------------------------------
        NAVIGATION BAR: Allows users to navigate to the relevant section on the website, such as log in/log out
        they can add the recipes, find a recipe and user profile page where they can see their username, links to
@@ -194,7 +196,7 @@ Features Left to Implement
   * step_description: where user can describe the recipe step by step how to use it.       
 
 
-##Tools Used
+## Tools Used
 ----------------------------------------------------------------------------------------
 * [Balsamiq wireframes](https://balsamiq.com/index.html)- To create my wireframes, showing the position of elements on varying screen sizes.
 
@@ -235,7 +237,7 @@ which is 12 of them.
 
   * AddRecipe.html: Passed with no other errors.
 
-  * Contact.html: It was one error which was(<label for="full-name" class="tetx-jet">)i had to correct for to id.
+  * Contact.html: It was one error which was(<label for="full-name" class="tetx-jet">)i had to correct (for) to (id).
                 Check it again in validator and no other errors was showed.
 
   * EditRecipe.html: No other errors where found.
@@ -275,4 +277,84 @@ which is 12 of them.
 #### User Story Testing:
 --------------------------------------------------------------------------------------------------------------
 
+New External User Goals: As a new user, I want to be able to view recipe books.
 
+   * There are two call actions in the website for user to see the website recipes.
+     You can find one in the main search bar and the other one under the main paige with a large
+     search bar (Please enter your Dish name Here with the search button on the right side).
+
+
+### Frequent User Goals:
+
+* Add Recipe Function:
+ As a frequent user i want to be able to share my recipes to the website with other members as well.
+
+ * Once loged in the user will be welcome on the paige with the button below to get started, once click
+   on the button it will be allowed to add the recipe to the website. Below it's a button to the paige 
+   add recipe. Once click on it you will be able to add your own.
+
+* Sign Up Function:
+
+As a user, I want to be able to register to the website and post my own recipe.
+
+   * You will find the sign up button in the bottom of the website when you scroll
+     down to the bottom of the website and click on it. It will direct you to the sign up paige where,
+     you will put your details in and singn up as a new user.
+     If there is no user in the data with the same email, the user account does not exist yet.
+     If the email was used already before to create an account, sign up will not be allowed.
+
+
+* Login Function:
+
+   * If there is no session no one is logged in if its true user has logged in.The email and password
+     must be correct then user session is started and user information is stored to the session.
+     If the criteria is not met, the status code will be returning the error message and will be displayed 
+     to the user. The criteria must be satisfied only then the app will create user session and will be logged in.
+
+* Edit Recipe Function:
+
+    * When user is logged in her/his session (_id) key match the (user_id) key from the recipe, then the 
+      edit button will be shown in section of the recipe card. The button will allow you to edit the recipe
+      you put in to the app by targeting the URL of the function from the edit recipe paige.
+
+* Profile Function:
+
+    * Profile is accesible only when the user did create the session if he/she is logged in, it will be 
+      displayed on the recipes that the user created before.It does this by matching the users _id and
+      recipe _id key.If the criteria is satisfied the app will dispaly users recipe and buttons that will
+      allowed user to use the CRUD function.
+
+* Delete Recipe Function      
+    * When user is logged in and his key _id is matching with user_id key from the recipe, then the delete
+      button will be shown in the bottom section of the recipe card. The button will allow to delete the 
+      recipe from the page and database.
+      If the user is not logged in the decorator function will prevent the user to get acces to page manually.
+
+* The Error Function
+    * Most of the request are done with ajax call on this website. Ajax allows to 'POST' from input data to
+      view function, it will recieve the data and then run a set of commands after which can be return as able
+      result through the JSON format and return a status code based on it's result.
+      
+### Testing Deployment
+
+  
+  * All the code written was tested and retested.
+  * Login system was tested using the bogus emails and passwords.
+  * Login system was tested using the correct email and password.
+  * Sign Up was tested with using the different emails.
+  * Search bar was tested by inputing values that don't exist in the database and 
+    searching for the value that exists by inputing numbers and symbols.
+
+  Here are lists of manually tested stories:
+
+  1. Paige Anchor Tags:
+    * In the Home paige try to click on the logo (Local Cuisine with the book logo on left side), and it 
+      should reload the paige.
+
+    * If you try to repeat for all other anchor tags [Home paige, About page, Recipe page and Contact page],
+     each one of the should take you to a different site and if you click on each of the sites on a logo with
+     [Local Cuisine book] it should take you back to home page.
+      
+ 2. Navigation Bar:
+
+    * If you go to Home page, try to downsize it and at some poitn should collapse to small fefroni icons     
