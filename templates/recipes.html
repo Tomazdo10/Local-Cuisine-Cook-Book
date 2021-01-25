@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-{% extends 'base.html'%}
-{% block content %}
+{% extends 'base.html'%} {% block content %}
 <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
         <div class="col-12">
@@ -24,7 +22,7 @@
         </div>
     </div>
 </header>
-<section class="recipe-section">
+<section class="recipes-section">
     <div class="container">
         <div class="row" id="recipe-display-row">
             {% for recipe in all_recipes %}

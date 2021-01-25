@@ -33,9 +33,8 @@ the community one the website.
   * Deploying to Heroku
   * Clone and run localy
 10. Secret key & Variables
-11. Design
-12. Credits
-13. Acknowledgements
+11. Credits
+12. Acknowledgements
 
 ## UX
 ---------------------------------------------------------------------------------
@@ -357,4 +356,84 @@ As a user, I want to be able to register to the website and post my own recipe.
       
  2. Navigation Bar:
 
-    * If you go to Home page, try to downsize it and at some poitn should collapse to small fefroni icons     
+    * If you go to Home page, try to downsize it and at some poitn should collapse to small hamburger icon,
+      then try to click on that hamburger icon and should open you a mobile navigation menu. if you try to 
+      increase browser window size while nav is open at some point it should go back to initial position.   
+     
+    * If you go to Contact Us page and try to submit an empty form and verify that an error message about 
+      requried fields appears.If you try to submit the form with an false email address and verify the error
+      message will appear.
+
+Using the Bootstrap layout and mobile development method , allowedme to build and create an responsive
+website page. From the content resize to the size of the displayed screen, this was tested all with
+Google Inspect Tool that allowed me to resize the screen and see how my website response to different
+device screen size.
+
+### Deployment
+-----------------------------------------------------------------------------------------------------------
+For this project I've used the [GitHub](https://github.com/Github) platform where i created my [repository]
+(https://github.com/Tomazdo10/Local-Cuisine-Cook-Book) using a template provided to me by [Code Institute](https://codeinstitute.net/)
+Once the repository was created I've used browser IDE addon for GitPod, to open the repository.
+Using this IDE i was able to make my commits and push all of my code to GitHub.When project was complited
+it was deployed through [Heroku](https://dashboard.heroku.com/apps).
+
+Deployment proces step by step:
+ 
+  1. Go to repository
+  2. Open the repository using GitPod IDE.
+  3. In the terminal run "PIP3 freeze --local"-requirements.txt command to create the txt. file with all the
+     dependencies used that Heroku needs to know what app uses.
+  4. In the terminal run the "echo web: python app.py- Procfile command to create Procfile that Heroku need'same
+     to know which file runs the app.
+  5. Check the files you created and if Procfile has a blank line under the first line, delete the blank line.
+  6. Go to Heroku and log in.
+  7. When you are logged in add your dashboard, click "create new app"
+  8. Under the "create new app" click the input field called "App Name"
+  9. Give your app a Unique Name using minus or dash instead of using just empty spaces betwen words.
+  10. Select the region colses to you.
+  11. Click "Create App" 
+  12. To connect the app you will set up automatic deployment by clicking on the GitHub icon inside the
+      "Deployment Method" display inside it.
+  13. Under the Deployment Method you will see the section connect to GitHub and make shore your Github
+      profile is displayed inside it.
+  14. Insert the repo-name inside the Connect to GitHub section. This input file can be found to the right
+      of where your profile is displayed.
+  15. Click Search
+  16. When it finds your repo, click on the connect button.
+  17. Before clicking the Enable Automatic Deployment button click on the settings tab in the top of the page.
+  18. Click on Reveal Config Var.
+  19. Here you can tell Heroku which variables are required.
+  20. Variables Inserted[MONGO_URI,PORT,ID,MOGODB_NAME,SECRET_KEY].
+  21. Go back to the GitHub IDE and make sure that you have pushed your requirements.txt and Procfile to the repo.
+  22. Get back to Heroku and click Enable Automatic Deployment.
+  23. Select your branch (Branch selected master).
+  24. Click Deploy Branch
+  25. It will take some time build the app in Heroku.
+  26. When the site is Deployed click View to lunch the new app.
+  --------------------------------------------------------------------------------------------------------------------
+
+### Secret key & Variables:
+
+Secret Key should not be pushed to GitHub or shared with anyone, to avoid this to happens I've included my
+Secret Key and key variables file which is stored locally.
+The file env.py includes these key variable and secret key.
+To stop the file being pushed to GitHub when commits are made  and pushed was created the (gitignore file)
+which included the file name within it.
+Every time commits and pushed the evn.py file is ignored.
+
+### Credits
+---------------------------------------------------------------------------------------------------------------------
+Images: All images for homepage wher used from google images. Images with recipe have been submited from me and testers
+usin the URL link to external source and are not owned by me or Local Cuisine Cook Book.
+
+Recipes where added me myself Tomaz Dobnik.
+
+Websites: There have been several websites crucial to learn for this project and to make it happen. I've helpd with
+[Code Institut](https://codeinstitute.net/),[Slack](https://slack.com/intl/en-gb/)
+[Stack Overflow](https://stackoverflow.com/),search for RecipeSearch.js,[Youtube](https://www.youtube.com/),
+[Flask Forms](https://pythonspot.com/flask-web-forms/), [MONGODB Atlas](https://docs.atlas.mongodb.com/#:~:text=MongoDB%20Atlas%20is%20a%20fully-managed%20cloud%20database%20developed,GCP%29.%20Follow%20the%20links%20below%20to%20get%20started.)
+
+### Acknowledgements
+------------------------------------------------------------------------------------------------------------------------------------------
+The inspiration for this project came from Code Institute school lessons. I would like to say thanks for the support
+and help for Slack community and tutoring from Code Institute.
