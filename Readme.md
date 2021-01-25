@@ -78,13 +78,14 @@ It also encourage othe users to create a free account and share their recipes of
    The Wireframes coverd desktop, tablet and mobile formats.
    
    ![Screenshot (169)](https://user-images.githubusercontent.com/66019489/105719351-19b4cd80-5f1a-11eb-8fd1-54d9048597a5.png)
+   ![Screenshot (174)](https://user-images.githubusercontent.com/66019489/105719703-816b1880-5f1a-11eb-9008-0f87741ee947.png)
    ![Screenshot (172)](https://user-images.githubusercontent.com/66019489/105719735-8cbe4400-5f1a-11eb-8871-590a0d5a22ba.png)
    ![Screenshot (173)](https://user-images.githubusercontent.com/66019489/105719742-8fb93480-5f1a-11eb-985b-2fb3b8b202ed.png)
    ![Screenshot (175)](https://user-images.githubusercontent.com/66019489/105719756-934cbb80-5f1a-11eb-8ce9-e513397c0810.png)
    ![Screenshot (176)](https://user-images.githubusercontent.com/66019489/105719781-9c3d8d00-5f1a-11eb-9a8c-a373b2c6db6e.png)
    ![Screenshot (177)](https://user-images.githubusercontent.com/66019489/105719801-a069aa80-5f1a-11eb-8b1c-5aba771c10db.png)
    ![Screenshot (178)](https://user-images.githubusercontent.com/66019489/105719816-a3649b00-5f1a-11eb-9778-a3b1e92c23bf.png)
-   ![Screenshot (174)](https://user-images.githubusercontent.com/66019489/105719703-816b1880-5f1a-11eb-9008-0f87741ee947.png)
+  
 
 
 
