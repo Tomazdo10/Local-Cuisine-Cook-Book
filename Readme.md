@@ -286,5 +286,165 @@ which is 12 of them.
 
 #### User Story Testing:
 --------------------------------------------------------------------------------------------------------------
+New External User Goals: As a new user, I want to be able to view recipe books.
 
+   * There are two call actions in the website for user to see the website recipes.
+     You can find one in the main search bar and the other one under the main paige with a large
+     search bar (Please enter your Dish name Here with the search button on the right side).
+
+
+### Frequent User Goals:
+
+* Add Recipe Function:
+ As a frequent user i want to be able to share my recipes to the website with other members as well.
+
+ * Once loged in the user will be welcome on the paige with the button below to get started, once click
+   on the button it will be allowed to add the recipe to the website. Below it's a button to the paige 
+   add recipe. Once click on it you will be able to add your own.
+
+* Sign Up Function:
+
+As a user, I want to be able to register to the website and post my own recipe.
+
+   * You will find the sign up button in the bottom of the website when you scroll
+     down to the bottom of the website and click on it. It will direct you to the sign up paige where,
+     you will put your details in and singn up as a new user.
+     If there is no user in the data with the same email, the user account does not exist yet.
+     If the email was used already before to create an account, sign up will not be allowed.
+
+
+* Login Function:
+
+   * If there is no session no one is logged in if its true user has logged in.The email and password
+     must be correct then user session is started and user information is stored to the session.
+     If the criteria is not met, the status code will be returning the error message and will be displayed 
+     to the user. The criteria must be satisfied only then the app will create user session and will be logged in.
+
+* Edit Recipe Function:
+
+    * When user is logged in her/his session (_id) key match the (user_id) key from the recipe, then the 
+      edit button will be shown in section of the recipe card. The button will allow you to edit the recipe
+      you put in to the app by targeting the URL of the function from the edit recipe paige.
+
+* Profile Function:
+
+    * Profile is accesible only when the user did create the session if he/she is logged in, it will be 
+      displayed on the recipes that the user created before.It does this by matching the users _id and
+      recipe _id key.If the criteria is satisfied the app will dispaly users recipe and buttons that will
+      allowed user to use the CRUD function.
+
+* Delete Recipe Function      
+    * When user is logged in and his key _id is matching with user_id key from the recipe, then the delete
+      button will be shown in the bottom section of the recipe card. The button will allow to delete the 
+      recipe from the page and database.
+      If the user is not logged in the decorator function will prevent the user to get acces to page manually.
+
+* The Error Function
+    * Most of the request are done with ajax call on this website. Ajax allows to 'POST' from input data to
+      view function, it will recieve the data and then run a set of commands after which can be return as able
+      result through the JSON format and return a status code based on it's result.
+      
+### Testing Deployment
+
+  
+  * All the code written was tested and retested.
+  * Login system was tested using the bogus emails and passwords.
+  * Login system was tested using the correct email and password.
+  * Sign Up was tested with using the different emails.
+  * Search bar was tested by inputing values that don't exist in the database and 
+    searching for the value that exists by inputing numbers and symbols.
+
+  Here are lists of manually tested stories:
+
+  1. Paige Anchor Tags:
+    * In the Home paige try to click on the logo (Local Cuisine with the book logo on left side), and it 
+      should reload the paige.
+
+    * If you try to repeat for all other anchor tags [Home paige, About page, Recipe page and Contact page],
+     each one of the should take you to a different site and if you click on each of the sites on a logo with
+     [Local Cuisine book] it should take you back to home page.
+      
+ 2. Navigation Bar:
+
+    * If you go to Home page, try to downsize it and at some poitn should collapse to small hamburger icon,
+      then try to click on that hamburger icon and should open you a mobile navigation menu. if you try to 
+      increase browser window size while nav is open at some point it should go back to initial position.   
+     
+    * If you go to Contact Us page and try to submit an empty form and verify that an error message about 
+      requried fields appears.If you try to submit the form with an false email address and verify the error
+      message will appear.
+
+Using the Bootstrap layout and mobile development method , allowedme to build and create an responsive
+website page. From the content resize to the size of the displayed screen, this was tested all with
+Google Inspect Tool that allowed me to resize the screen and see how my website response to different
+device screen size.
+
+### Deployment
+-----------------------------------------------------------------------------------------------------------
+For this project I've used the [GitHub](https://github.com/Github) platform where i created my [repository]
+(https://github.com/Tomazdo10/Local-Cuisine-Cook-Book) using a template provided to me by [Code Institute](https://codeinstitute.net/)
+Once the repository was created I've used browser IDE addon for GitPod, to open the repository.
+Using this IDE i was able to make my commits and push all of my code to GitHub.When project was complited
+it was deployed through [Heroku](https://dashboard.heroku.com/apps).
+
+Deployment proces step by step:
+ 
+  1. Go to repository
+  2. Open the repository using GitPod IDE.
+  3. In the terminal run "PIP3 freeze --local"-requirements.txt command to create the txt. file with all the
+     dependencies used that Heroku needs to know what app uses.
+  4. In the terminal run the "echo web: python app.py- Procfile command to create Procfile that Heroku need'same
+     to know which file runs the app.
+  5. Check the files you created and if Procfile has a blank line under the first line, delete the blank line.
+  6. Go to Heroku and log in.
+  7. When you are logged in add your dashboard, click "create new app"
+  8. Under the "create new app" click the input field called "App Name"
+  9. Give your app a Unique Name using minus or dash instead of using just empty spaces betwen words.
+  10. Select the region colses to you.
+  11. Click "Create App" 
+  12. To connect the app you will set up automatic deployment by clicking on the GitHub icon inside the
+      "Deployment Method" display inside it.
+  13. Under the Deployment Method you will see the section connect to GitHub and make shore your Github
+      profile is displayed inside it.
+  14. Insert the repo-name inside the Connect to GitHub section. This input file can be found to the right
+      of where your profile is displayed.
+  15. Click Search
+  16. When it finds your repo, click on the connect button.
+  17. Before clicking the Enable Automatic Deployment button click on the settings tab in the top of the page.
+  18. Click on Reveal Config Var.
+  19. Here you can tell Heroku which variables are required.
+  20. Variables Inserted[MONGO_URI,PORT,ID,MOGODB_NAME,SECRET_KEY].
+  21. Go back to the GitHub IDE and make sure that you have pushed your requirements.txt and Procfile to the repo.
+  22. Get back to Heroku and click Enable Automatic Deployment.
+  23. Select your branch (Branch selected master).
+  24. Click Deploy Branch
+  25. It will take some time build the app in Heroku.
+  26. When the site is Deployed click View to lunch the new app.
+  --------------------------------------------------------------------------------------------------------------------
+
+### Secret key & Variables:
+
+Secret Key should not be pushed to GitHub or shared with anyone, to avoid this to happens I've included my
+Secret Key and key variables file which is stored locally.
+The file env.py includes these key variable and secret key.
+To stop the file being pushed to GitHub when commits are made  and pushed was created the (gitignore file)
+which included the file name within it.
+Every time commits and pushed the evn.py file is ignored.
+
+### Credits
+---------------------------------------------------------------------------------------------------------------------
+Images: All images for homepage wher used from google images. Images with recipe have been submited from me and testers
+usin the URL link to external source and are not owned by me or Local Cuisine Cook Book.
+
+Recipes where added me myself Tomaz Dobnik.
+
+Websites: There have been several websites crucial to learn for this project and to make it happen. I've helpd with
+[Code Institut](https://codeinstitute.net/),[Slack](https://slack.com/intl/en-gb/)
+[Stack Overflow](https://stackoverflow.com/),search for RecipeSearch.js,[Youtube](https://www.youtube.com/),
+[Flask Forms](https://pythonspot.com/flask-web-forms/), [MONGODB Atlas](https://docs.atlas.mongodb.com/#:~:text=MongoDB%20Atlas%20is%20a%20fully-managed%20cloud%20database%20developed,GCP%29.%20Follow%20the%20links%20below%20to%20get%20started.)
+
+### Acknowledgements
+------------------------------------------------------------------------------------------------------------------------------------------
+The inspiration for this project came from Code Institute school lessons. I would like to say thanks for the support
+and help for Slack community and tutoring from Code Institute.
 
