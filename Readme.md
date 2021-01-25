@@ -76,6 +76,9 @@ It also encourage othe users to create a free account and share their recipes of
    -----------------------------------------------------------------------------------------------
    Using the user stories , I put together the wireframes for the Local Cuisine Cook Book using Balsamiq.
    The Wireframes coverd desktop, tablet and mobile formats.
+   
+   ![Screenshot (169)](https://user-images.githubusercontent.com/66019489/105719351-19b4cd80-5f1a-11eb-8fd1-54d9048597a5.png)
+
 
 
    ### Scope
