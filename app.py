@@ -92,8 +92,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
 app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
 mongo = PyMongo(app)
-app.config['MONGO_DBNAME'] = os.getenv('MONGO_DBNAME')
-app.config['MONGO_URI'] = os.getenv('MONGO_URI')
+app.config['MONGO_DBNAME'] = os.getenv('Recipe')
 
 users = mongo.db.user_login_system
 recipes = mongo.db.recipes
@@ -120,6 +119,11 @@ def prevent_misuse(f):
             return f(*args, **kwargs)
 
     return wrap
+    
+
+@app.route('/')
+def index():
+    return render_template("index.html")
 
 
 @app.route('/')
