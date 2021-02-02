@@ -1,0 +1,1 @@
+<link rel="icon" href="{% static 'base/icons/favicon.ico' %}">
