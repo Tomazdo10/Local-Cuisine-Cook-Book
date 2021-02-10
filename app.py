@@ -1,12 +1,14 @@
 import os
 from flask import Flask, render_template, jsonify, \
-    request, session, redirect, url_for
+    request, session, redirect, url_for, flash
 from flask_pymongo import PyMongo
 from passlib.hash import pbkdf2_sha256
 from functools import wraps
 import uuid
 from bson.objectid import ObjectId
 from bson.json_util import dumps
+if os.path.exists("env.py"):
+    import env
 
 
 # Classes
@@ -89,11 +91,12 @@ class User:
 
 # Database
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY')
-app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
-mongo = PyMongo(app)
-app.config['MONGO_DBNAME'] = os.getenv('Recipe')
+app.config['MONGO_URI'] = "mongodb://localhost:27017/recipes"
+app.config['MONGO_DBNAME'] = os.getenv('recipes')
+app.secret_key = os.environ.get("SECRET_KEY")
 
+
+mongo = PyMongo(app)
 users = mongo.db.user_login_system
 recipes = mongo.db.recipes
 
@@ -120,11 +123,6 @@ def prevent_misuse(f):
 
     return wrap
     
-
-@app.route('/')
-def index():
-    return render_template("index.html")
-
 
 @app.route('/')
 @app.route('/home/')
@@ -156,7 +154,7 @@ def recipes_page():
     return render_template('recipes.html', all_recipes=recipes.find())
 
 
-@app.route('/recipes/search', methods=['GET', 'POST'])
+
 def search_data():
     query_text = request.form.get('search_value')
 
@@ -201,9 +199,12 @@ def about_page():
     return render_template('about.html')
 
 
-@app.route('/contact_us/')
+@app.route('/contact_us/', methods=["GET", "POST"])
 def contact_page():
-    return render_template('contact.html')
+    if request.method == "POST":
+        flash("Thanks {}, we have receive your message!".format(
+        request.form.get("name")))
+    return render_template('contact.html', page_title="Contact")
 
 
 @app.route('/sign_up/')

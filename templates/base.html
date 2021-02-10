@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Cuisine Cook Book</title>
-    <link rel="shortcut icon" href="{{url_for('static', filename='/img/favicon.ico') }}" type="img" />
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{url_for('static', filename='/img/favicon.ico') }}" type="img/x-icon" />
     <link rel="stylesheet" href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/clean-blog.min.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
@@ -16,7 +15,7 @@
 <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top box-shadow" id="mainNav" >
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{ url_for('index') }}"><i class="fas fa-book"></i>Local
+            <a class="navbar-brand js-scroll-trigger" href="{{ url_for('home_page') }}"><i class="fas fa-book"></i>Local
                 Cuisine</a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -32,7 +31,7 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url_for ('index') }}">Home</a>
+                        <a class="nav-link" href="{{url_for ('home_page') }}">Home</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
@@ -140,6 +139,9 @@
     <script src="{{url_for('static', filename='js/clean-blog.min.js')}}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script src="{{ url_for('static',filename='js/signup.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+   
     <script>
         $("#copyright").text(new Date().getFullYear());
     </script>
