@@ -1,14 +1,28 @@
 import os
+import dns
 from flask import Flask, render_template, jsonify, \
-    request, session, redirect, url_for, flash
+    request, session, redirect, url_for
 from flask_pymongo import PyMongo
 from passlib.hash import pbkdf2_sha256
 from functools import wraps
 import uuid
 from bson.objectid import ObjectId
 from bson.json_util import dumps
-if os.path.exists("env.py"):
+from os import path
+if path.exists("env.py"):
     import env
+
+# Database
+app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY')
+
+
+app.config['MONGO_DBNAME'] = "recipes"
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+mongo = PyMongo(app)
+
+users = mongo.db.user_login_system
+recipes = mongo.db.recipes
 
 
 # Classes
@@ -89,17 +103,6 @@ class User:
 
         return jsonify({'success': 'Recipe has been updated'}), 200
 
-# Database
-app = Flask(__name__)
-app.config['MONGO_URI'] = "mongodb://localhost:27017/recipes"
-app.config['MONGO_DBNAME'] = os.getenv('recipes')
-app.secret_key = os.environ.get("SECRET_KEY")
-
-
-mongo = PyMongo(app)
-users = mongo.db.user_login_system
-recipes = mongo.db.recipes
-
 
 # Decorators
 def login_required(f):
@@ -122,7 +125,6 @@ def prevent_misuse(f):
             return f(*args, **kwargs)
 
     return wrap
-    
 
 @app.route('/')
 @app.route('/home/')
@@ -154,7 +156,7 @@ def recipes_page():
     return render_template('recipes.html', all_recipes=recipes.find())
 
 
-
+@app.route('/recipes/search', methods=['GET', 'POST'])
 def search_data():
     query_text = request.form.get('search_value')
 
@@ -199,12 +201,9 @@ def about_page():
     return render_template('about.html')
 
 
-@app.route('/contact_us/', methods=["GET", "POST"])
+@app.route('/contact_us/')
 def contact_page():
-    if request.method == "POST":
-        flash("Thanks {}, we have receive your message!".format(
-        request.form.get("name")))
-    return render_template('contact.html', page_title="Contact")
+    return render_template('contact.html')
 
 
 @app.route('/sign_up/')
