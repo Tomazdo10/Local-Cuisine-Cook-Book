@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */ 
+let $;
 $("document").ready(function(){
     let ingIndexArrayString = $(".ingredient-index").text().split('.').slice(0,-1);
     let i;

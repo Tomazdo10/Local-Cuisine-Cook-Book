@@ -1,4 +1,7 @@
 /*jshint esversion: 6 */ 
+let $ajax;
+let $;
+
 $("document").ready(function(){
     let ingCount = 1;
     let desCount = 1;

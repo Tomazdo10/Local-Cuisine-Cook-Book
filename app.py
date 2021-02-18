@@ -200,9 +200,11 @@ def about_page():
     return render_template('about.html')
 
 
-@app.route('/contact_us/')
+@app.route("/contact_us", methods=['GET', 'POST'])
 def contact_page():
-    return render_template('contact.html')
+    if request.method == 'POST':
+        print(request.form)
+    return render_template('contact.html', contact_page="Contact")
 
 
 @app.route('/sign_up/')
