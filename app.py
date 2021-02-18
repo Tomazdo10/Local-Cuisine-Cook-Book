@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, jsonify, \
+from flask import Flask, flash, render_template, jsonify, \
     request, session, redirect, url_for
 from flask_pymongo import PyMongo
 from passlib.hash import pbkdf2_sha256
@@ -8,7 +8,7 @@ import uuid
 from bson.objectid import ObjectId
 from bson.json_util import dumps
 from os import path
-if path.exists("env.py"):
+if os.path.exists("env.py"):
     import env
 
 # Database
@@ -203,7 +203,8 @@ def about_page():
 @app.route("/contact_us", methods=['GET', 'POST'])
 def contact_page():
     if request.method == 'POST':
-        print(request.form)
+        flash(message="Thanks {}, we have recived your message!".format(
+            request.form.get("name")))
     return render_template('contact.html', contact_page="Contact")
 
 
