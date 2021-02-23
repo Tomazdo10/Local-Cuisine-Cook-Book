@@ -17,7 +17,7 @@ app.secret_key = os.environ.get('SECRET_KEY')
 
 
 app.config['MONGO_DBNAME'] = "Recipe_pot"
-app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 mongo = PyMongo(app)
 
 users = mongo.db.user_login_system
