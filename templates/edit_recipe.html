@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% extends 'base.html' %} {% block content %}
 <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
@@ -23,11 +22,8 @@
                 <hr class="about-hr--color">
             </div>
             <div class="col-12">
-                <form class="pt-5 pb-5" 
-                id="edit-recipe" 
-                name="edit-recipe" 
-                method="POST"
-                action="{{ url_for('update_recipe', recipe_id=user_recipe._id)}}">
+                <form class="pt-5 pb-5" id="edit-recipe" name="edit-recipe" method="POST"
+                    action="{{ url_for('update_recipe', recipe_id=user_recipe._id)}}">
                     <div class="form-group row text-center">
                         <div class="col-12">
                             <label for="recipe_name" class="text-jet">Recipe Name</label>
@@ -53,7 +49,7 @@
                             <label id="email" class="text-jet">Ingredients</label>
                         </div>
                         {% for ingredient in user_ingredient %}
-<div class="col-1 d-flex align-items-center remove{{loop.index}}">
+                        <div class="col-1 d-flex align-items-center remove{{loop.index}}">
                             <p class="mx-auto my-auto ingredient-index">{{loop.index}}</p>
                         </div>
                         <div class="col-11 remove{{loop.index}}">
@@ -75,7 +71,7 @@
                             </div>
                         </div>
                         {% ednfor %}
-<div class="col-12" id="ingridient-action-container">
+                        <div class="col-12" id="ingridient-action-container">
                             <div class="row d-flex justify-content-center">
                                 <div id="del-ingredient" class="delete-ingredient-btn display-none">
                                 </div>
@@ -85,38 +81,38 @@
                         <i class="fas fa-pepper-hot mt-3 ml-1 new-ingredient-btn" id="add-ingredient"></i>
                     </div>
 
-    <div class="form-group mt-4 row text-center">
-        <div class="col-12">
-            <label id="text" class="text-jet">Steps</label>
-        </div>
-        {% for step in user_recipe.step_description %}
-<div class="col-1 d-flex align-items-center mt-3 mt-sm-2 remove{{ loop.index }}">
-            <p class="mx-auto step-index">{{loop.index}</p>
-        </div>
-        <div class="col-11 mt-3 mt-sm-2 remove {{loop.index}}">
-            <textarea class="recipe-form-text recipe-form-input--style" id="step_description" name="step_description"
-                placeholder="Step Description" required>
+                    <div class="form-group mt-4 row text-center">
+                        <div class="col-12">
+                            <label id="text" class="text-jet">Steps</label>
+                        </div>
+                        {% for step in user_recipe.step_description %}
+                        <div class="col-1 d-flex align-items-center mt-3 mt-sm-2 remove{{ loop.index }}">
+                            <p class="mx-auto step-index">{{loop.index}}.</p>
+                        </div>
+                        <div class="col-11 mt-3 mt-sm-2 remove {{loop.index}}">
+                            <textarea class="recipe-form-text recipe-form-input--style" id="step_description"
+                                name="step_description" placeholder="Step Description" required>
           {{step}}
 </textarea>
-        </div>
-        {% endfor %}
-<div class="col-12" id="step-action-container">
-            <div class="row d-flex justify-content-center">
-                <div id="del-step" class="delete-ingredient-btn display-none">
-                    <i class="fas fa-pepper-hot mt-3 mr-1"></i>
-                </div>
-                <div>
-                    <i class="fas fa-pepper-hot mt-3 new-ingredient-btn display-none" id="add-step"></i>
-                </div>
+                        </div>
+                        {% endfor %}
+                        <div class="col-12" id="step-action-container">
+                            <div class="row d-flex justify-content-center">
+                                <div id="del-step" class="delete-ingredient-btn display-none">
+                                    <i class="fas fa-pepper-hot mt-3 mr-1"></i>
+                                </div>
+                                <div>
+                                    <i class="fas fa-pepper-hot mt-3 new-ingredient-btn display-none" id="add-step"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4 col-12 text-center">
+                        <button class="btn btn-success" type="submit">Update Recipe</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-    <div class="form-group mt-4 col-12 text-center">
-        <button class="btn btn-success" type="submit">Update Recipe</button>
-    </div>
-    </form>
-    </div>
-    </div>
     </div>
 </section>
 <template id="ingredient-template">

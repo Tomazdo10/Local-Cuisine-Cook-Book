@@ -124,6 +124,7 @@ def prevent_misuse(f):
             return f(*args, **kwargs)
 
     return wrap
+    
 
 @app.route('/')
 @app.route('/home/')
@@ -249,7 +250,7 @@ def sign_out():
     return user.signout()
 
 
-@app.route('/add_recipe/')
+@app.route('/add_recipe/', methods=['POST'])
 @login_required
 def add_recipe():
     return render_template('add_recipe.html')
