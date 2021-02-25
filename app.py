@@ -127,13 +127,13 @@ def prevent_misuse(f):
     
 
 @app.route('/')
-@app.route('/home/')
+@app.route('/home')
 @prevent_misuse
 def home_page():
     return render_template('index.html')
 
 
-@app.route('/recipes/', methods=['GET', 'POST'])
+@app.route('/recipes', methods=['GET', 'POST'])
 def recipes_page():
     value_searched = request.form.get("search_value")
     if value_searched:
@@ -196,7 +196,7 @@ def search_data():
     return json_data, 200
 
 
-@app.route('/about/')
+@app.route('/about')
 def about_page():
     return render_template('about.html')
 
@@ -209,7 +209,7 @@ def contact_page():
     return render_template('contact.html', contact_page="Contact")
 
 
-@app.route('/sign_up/')
+@app.route('/sign_up')
 @prevent_misuse
 def signup_page():
     return render_template('signup.html')
@@ -222,7 +222,7 @@ def signup():
     return user.signup()
 
 
-@app.route('/login/')
+@app.route('/login')
 @prevent_misuse
 def login_page():
     return render_template('login.html')
@@ -235,7 +235,7 @@ def login():
     return user.login()
 
 
-@app.route('/profile_page/')
+@app.route('/profile_page')
 @login_required
 def profile_page():
     return render_template('profile.html',
@@ -250,7 +250,7 @@ def sign_out():
     return user.signout()
 
 
-@app.route('/add_recipe/', methods=['POST'])
+@app.route('/add_recipe', methods=['POST'])
 @login_required
 def add_recipe():
     return render_template('add_recipe.html')
