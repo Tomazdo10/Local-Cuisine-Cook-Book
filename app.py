@@ -243,7 +243,7 @@ def profile_page():
                                'user_id': session['user']['_id']}))
 
 
-@app.route('/profile_page/signout')
+@app.route('/profile_page/sign_out')
 @login_required
 def sign_out():
     user = User()
