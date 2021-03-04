@@ -7,30 +7,35 @@
                 <h3 class="text-white-50 mx-auto mt-2 mb-5">
                     Sign Up and see what can Local Cuisine offer?
                 </h3>
-                <a class="btn btn-success js-scroll-trigger" href="#SignUp">Create Account</a>
+                <a class="btn btn-success js-scroll-trigger" href="#signup">Create Account</a>
             </div>
         </div>
     </div>
 </header>
 <section class="form-section-background--color">
+    <form method="POST" action="{{ url_for('signup')}}">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center pt-5" id="SignUp">
                 <h3 class="text-jet mb-4">Create an Account</h3>
                 <hr class="about-hr--color" />
+                </div>
             </div>
         </div>
+        <!--Name-->
         <form id="signup_form" name="signup_form" class="form-row">
             <div class="form-group col-12 text-center">
                 <label for="name" class="text-jet">Full Name</label>
                 <input class="contact-form-input form-control contact-form-input--style" type="text" id="name"
                     name="name" placeholder="Your Full Name" required />
             </div>
+            <!--Email-->
             <div class="form-group col-12 mt-4 text-center">
                 <label for="email" class="text-jet">Email Address</label>
                 <input class="contact-form-input form-control contact-form-input--style" type="email" id="email"
                     name="email" placeholder="email@yahoo.com" required />
             </div>
+            <!--Password-->
             <div class="form-group col-12 mt-4 text-center">
                 <label for="email" class="text-jet">Password</label>
                 <input class="contact-form-input form-control contact-form-input--style" type="password" id="password"

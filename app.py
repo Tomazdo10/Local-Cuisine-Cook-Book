@@ -11,17 +11,17 @@ from os import path
 if os.path.exists("env.py"):
     import env
 
+
 # Database
 app = Flask(__name__)
+
+app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
-
-
-app.config['MONGO_DBNAME'] = "local-cuisine-cook-book"
-app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 mongo = PyMongo(app)
 
 users = mongo.db.user_login_system
-recipes = mongo.db.recipes
+recipes = mongo.db.recipe
 
 
 # Classes
@@ -209,7 +209,7 @@ def contact_page():
     return render_template('contact.html', contact_page="Contact")
 
 
-@app.route('/sign_up')
+@app.route('/sign_up', methods=['GET', 'POST'])
 @prevent_misuse
 def signup_page():
     return render_template('signup.html')
