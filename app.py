@@ -169,7 +169,7 @@ def search_data():
         return json_data, 200
 
     cursor = recipes.aggregate([
-        {"$search": {"text": {"path": "recipe_name", "query": query_text},
+        {"$search": {"text": {"path": "recipe_name", "query": "query_text"},
                      "highlight": {"path": "recipe_name"}}},
         {"$project": {
             "_id": 1,
@@ -243,7 +243,7 @@ def login_page():
 
         
     if  existing_user:
-        # ensure hashed password matches users input
+        
         if check_password_hash(
             existing_user['password'], request.form.get('password')):
             session["user"] = request.form.get("username").lower()

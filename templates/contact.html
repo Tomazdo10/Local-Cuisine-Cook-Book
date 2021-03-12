@@ -1,7 +1,7 @@
 {% extends "base.html" %}  {% block content %}
 <header class="mastehead">
 {% with messages = get_flashed_messages() %}
-{% if messages%}
+{% if messages %}
 <ul class="flashes">
 {% for message in messages %}
 <li>{{ message }}</li>
