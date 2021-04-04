@@ -5,7 +5,7 @@ if os.path.exists("env.py"):
 
 
 MONGO_URI = os.environ.get("MONGO_URI")
-DATABASE = "myDB"    
+DATABASE = "myDB.Cuisune"    
 COLLECTION = "cuisine"
 
 
@@ -22,9 +22,32 @@ conn = mongo_connect("MONGO_URI")
 
 coll = conn[DATABASE][COLLECTION]
 
-new_doc = {"name": "recipe_name", "ingredients": "recipe_ingredients", 
+new_docs = [{"name": "recipe_name", "ingredients": "recipe_ingredients", 
            "preperation": "preperation_time", "amount": "ingredients_amount",  
-           "time": "preperation_time"}
+           "time": "cooking_time", "img_url": "image"}
+           ,{
+           }
+              "name": "recipe_name", "ingredients": "recipe_ingredients", 
+           "preperation": "preperation_time", "amount": "ingredients_amount",  
+           "time": "cooking_time", "img_url": "image" 
+           },
+           {
+               "name": "recipe_name", "ingredients": "recipe_ingredients", 
+           "preperation": "preperation_time", "amount": "ingredients_amount",  
+           "time": "cooking_time", "img_url": "image"
+           },
+           {
+               "name": "recipe_name", "ingredients": "recipe_ingredients", 
+           "preperation": "preperation_time", "amount": "ingredients_amount",  
+           "time": "cooking_time", "img_url": "image"
+           },
+           {
+               "name": "recipe_name", "ingredients": "recipe_ingredients", 
+           "preperation": "preperation_time", "amount": "ingredients_amount",  
+           "time": "cooking_time", "img_url": "image"
+           },
+
+           }]
 
 coll.insert(new_doc)
 
