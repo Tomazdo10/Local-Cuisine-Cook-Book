@@ -135,6 +135,7 @@ def home_page():
 
 @app.route('/recipes', methods=['GET', 'POST'])
 def recipes_page():
+    recipes = mongo.db.recipe
     value_searched = request.form.get("search_value")
     if value_searched:
         cursor = recipes.aggregate([
@@ -158,6 +159,7 @@ def recipes_page():
 
 @app.route('/recipes/search', methods=['GET', 'POST'])
 def search_data():
+    recipes = mongo.db.recipe
     query_text = request.form.get('search_value')
 
     if not query_text:
@@ -241,7 +243,7 @@ def login_page():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()}) 
 
-        
+
     if  existing_user:
         
         if check_password_hash(
@@ -286,12 +288,14 @@ def sign_out():
 @app.route('/add_recipe', methods=['POST'])
 @login_required
 def add_recipe():
+    recipes = mongo.db.recipe
     return render_template('add_recipe.html')
 
 
 @app.route('/add_recipe/insert_recipe', methods=['GET', 'POST'])
 @login_required
 def insert_recipe():
+    recipes = mongo.db.recipe
     user = User()
     return user.insert_recipe()
 
@@ -299,6 +303,7 @@ def insert_recipe():
 @app.route('/edit_recipe/<recipe_id>')
 @login_required
 def edit_recipe(recipe_id):
+    recipes = mongo.db.recipe
     recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
     ingredients = zip(recipe['ingredient_name'],
                       recipe['ingredient_amount'],
@@ -311,6 +316,7 @@ def edit_recipe(recipe_id):
 @app.route('/update_recipe/<recipe_id>', methods=['GET', 'POST'])
 @login_required
 def update_recipe(recipe_id):
+    recipes = mongo.db.recipe
     User().update_recipe(recipe_id)
     return redirect(url_for('profile_page'))
 
@@ -318,12 +324,14 @@ def update_recipe(recipe_id):
 @app.route('/delete_recipe/<recipe_id>')
 @login_required
 def delete_recipe(recipe_id):
+    recipes = mongo.db.recipe
     recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('profile_page'))
 
 
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
+    recipes = mongo.db.recipe
     recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
     ingredients = zip(recipe['ingredient_name'],
                       recipe['ingredient_amount'],
