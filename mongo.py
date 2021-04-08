@@ -24,30 +24,30 @@ coll = conn[DATABASE][COLLECTION]
 
 new_docs = [{"name": "recipe_name", "ingredients": "recipe_ingredients", 
            "preperation": "preperation_time", "method": "method",  
-           "time": "cooking_time", "img_url": "image"}
-           ,{
-           }
-              "name": "recipe_name", "ingredients": "recipe_ingredients", 
+           "time": "cooking_time", "img_url": "image"
+           },
+           {
+            "name": "recipe_name", "ingredients": "recipe_ingredients", 
            "preperation": "preperation_time", "method": "method",  
            "time": "cooking_time", "img_url": "image" 
            },
            {
-               "name": "recipe_name", "ingredients": "recipe_ingredients", 
+            "name": "recipe_name", "ingredients": "recipe_ingredients", 
            "preperation": "preperation_time", "method": "method",  
            "time": "cooking_time", "img_url": "image"
            },
            {
-               "name": "recipe_name", "ingredients": "recipe_ingredients", 
+            "name": "recipe_name", "ingredients": "recipe_ingredients", 
            "preperation": "preperation_time", "method": "method",  
            "time": "cooking_time", "img_url": "image"
            },
            {
-               "name": "recipe_name", "ingredients": "recipe_ingredients", 
+            "name": "recipe_name", "ingredients": "recipe_ingredients", 
            "preperation": "preperation_time", "method": "method",  
            "time": "cooking_time", "img_url": "image"
            },
 
-           }]
+]
 
 coll.insert(new_doc)
 

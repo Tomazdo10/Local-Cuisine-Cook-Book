@@ -31,7 +31,7 @@ def show_menu():
 
 
 def get_record():
-     print("")
+    print("")
     first = input("Enter Name of the recipe > ")
     second = input("Enter Recipe_ingredients > ")
 
@@ -44,7 +44,7 @@ def get_record():
         print("")
         print("Error! no results found")
 
-    return doc:    
+        return doc
 
 
 def add_record():
