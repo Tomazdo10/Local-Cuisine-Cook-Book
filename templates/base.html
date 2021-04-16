@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+JP&family=Noto+Serif&family=Open+Sans&family=Roboto&family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    
+    {% block styles %}
+    {% endblock %}
 
 <body id="#">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top box-shadow" id="mainNav" >
@@ -146,7 +147,8 @@
     <script>
         $("#copyright").text(new Date().getFullYear());
     </script>
-
+{% block scripts %}
+{% endblock %}
 </body>
 
 </html>
