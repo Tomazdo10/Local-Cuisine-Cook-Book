@@ -1,14 +1,5 @@
-{% extends "base.html" %}  {% block content %}
+{% extends "base.html" %} {% block content %}
 <header class="mastehead">
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul class="flashes">
-{% for message in messages %}
-<li>{{ message }}</li>
-{% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
     <div class="container d-flex h-100 align-items-center">
         <div class="col-12">
             <div class="mx-auto text-center">
@@ -18,9 +9,8 @@
                 <h3 class="text-black-50 mx-auto mt-2 mb-5">
                     Use the form to send us an email. We will
                     be more then happy to answer you back any
-                    questions you got for us. Your's Local Cuisine
+                    questions you got for us. Yours Local Cuisine
                 </h3>
-                <a class="btn btn-success js-scroll-trigger" href="#form">Contact Form</a>
             </div>
         </div>
     </div>
@@ -29,37 +19,25 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center pt-5">
-                <h3 class="tetx-jet mb-4">Contact Form</h3>
-                <hr class="about-hr--color" >
+                <h2 class="tetx-jet mb-4">Contact Form</h2>
             </div>
         </div>
-        <form method="POST" id="contactForm" class="form-row">
+        <form id="contactForm" class="form-row">
             <div class="form-group col-12 text-center">
                 <label id="full-name" class="tetx-jet">Full Name</label>
-                <input class="contact-form-input form-control contact-form-input--style"
-                type="text"
-                id="full_name"
-                name="name"
-                placeholder="Your Full Name"
-                required>
+
+                <input class="contact-form-input form-control contact-form-input--style" type="text" id="full_name"
+                    name="from_name" placeholder="Your Full Name" required>
             </div>
             <div class="form-group col-12 mt-4 text-center">
-                  <label for="email" class="tetx-jet">Email</label>
-                <input class="contact-form-input form-control contact-form-input--style"
-                type="email"
-                class="form-control"
-                name="email"
-                placeholder="Email Address"
-                id="email"
-                required>
+                <label for="email" class="tetx-jet">Email</label>
+
+                <input class="contact-form-input form-control contact-form-input--style" type="email" id="email"
+                    name="from_email" placeholder="email@yahoo.com" required>
             </div>
-                <div class="form-group col-12 mt-4 text-center">
-                  <label for="text" class="tetx-jet">Message</label>
-                <textarea 
-                class="contact-form-text contact-form-input--style"
-                id="text"
-                name="message"
-                required>
+            <div class="form-group col-12 mt-4 text-center">
+                <label for="text" class="tetx-jet">Message</label>
+                <textarea class="contact-form-text contact-form-input--style" id="text" name="from_message" required>
                 </textarea>
             </div>
             <div class="form-group col-12 mt-4 text-center">
@@ -70,5 +48,4 @@
 </section>
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{ url_for('static', filename='js/emailjs.js') }}"></script>
- {% endblock %}
+{% endblock %}
