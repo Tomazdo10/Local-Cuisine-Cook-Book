@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 {% extends 'base.html'%}
 {% block content %}
-<header class="masthead">
+<header class="masthead" style="background-color:lightgrey;">
     <div class="container d-flex h-100 align-items-center">
         <div class="col-12">
             <div class="mx-auto text-center">
@@ -35,22 +34,22 @@
                         <div class="row">
                             <div class="col-9 d-flex align-items-center">
                                 <h4 class="card-title text-left text-capitalize mb-0">
-                                    {{ recipe.recipe_name}}
+                                    {{ recipe.recipe_name }}
                                 </h4>
                             </div>
                             <div class="col-3">
-                                <a href="#collapse{{ loop.index }}" data-toggle="collapse"
+                                <a href="collapse{{ loop.index }}" data-toggle="collapse"
                                     class="card-title toggle-info btn mb-0">
                                     <span class="left"></span>
                                     <span class="right"></span>
                                 </a>
                             </div>
                         </div>
-                        <div class="collapse" id="collapse{{ loop.index}}">
+                        <div class="collapse1" id="collapse{{ loop.index }}">
                             <p class="card-text text-left mt-3">
                                 {{ recipe.step_description[0] }}
                             </p>
-                            <a href="{{ url_for('view_recipe', recipe_id=recipe._id)}}">Read More</a>
+                            <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -69,15 +68,16 @@
                         <h4 class="card-title text-left text-capitalize mb-0" id="card-heading"></h4>
                     </div>
                     <div class="col-3">
-                        <a data-toggle="collapse" class="card-title toggle-info btn mb-0" id="collapse-btn">
+                        <a data-toggle="collapse2" class="card-title toggle-info btn mb-0" id="collapse-btn">
                             <span class="left"></span>
                             <span class="right"></span>
                         </a>
                     </div>
                 </div>
-                <div class="collapse">
-                    <p class="card-text text-left mt-3" id="recipe-description"></p>
-                    <a class="btn btn-success w-100" id="read-more-btn">Read More</a>
+                <div class="collapse3">
+                    <p class="card-text text-left mt-3" id="recipes_description"></p>
+                    <a href="{{url_for('recipes_page')}}" class="btn btn-success w-100" id="read more-btn">Read
+                        More</a>
                 </div>
             </div>
         </div>
@@ -91,5 +91,5 @@
     </div>
 </template>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{ url_for('static', filename='js/RecipeSearch.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
