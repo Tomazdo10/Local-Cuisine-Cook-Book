@@ -1,163 +1,134 @@
 import os
-from flask import Flask, render_template, jsonify, \
-    request, session, redirect, url_for
+from flask import (
+    Flask, flash, render_template,
+    request, session, redirect, url_for)
 from flask_pymongo import PyMongo
-from passlib.hash import pbkdf2_sha256
-from functools import wraps
-import uuid
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 from bson.json_util import dumps
+from os import path
+if os.path.exists("env.py"):
+    import env
 
-
-# Classes
-class User:
-
-    def start_session(self, user):
-        del user['password']
-        session['logged_in'] = True
-        session['user'] = user
-
-        return jsonify(user), 200
-
-    def signup(self):
-
-        # Create the User Object
-        user = {
-            '_id': uuid.uuid4().hex,
-            'name': request.form.get('name').lower(),
-            'email': request.form.get('email').lower(),
-            'password': request.form.get('password')
-        }
-
-        # Encrypt the password
-        user['password'] = pbkdf2_sha256.hash(user['password'])
-
-        # Check for existing email adress
-        if users.find_one({'email': user['email'].lower()}):
-            return jsonify({'error': 'Email adress already in use'}), 400
-
-        if users.insert_one(user):
-            return self.start_session(user)
-
-        return jsonify({"error": "Signup_failed"}), 400
-
-    def signout(self):
-        session.clear()
-        return redirect(url_for('home_page'))
-
-    def login(self):
-        email = request.form.get('email').lower()
-        user = users.find_one({'email': email})
-
-        if user and pbkdf2_sha256.verify(
-                                         request.form.get('password'),
-                                         user['password']):
-
-            return self.start_session(user)
-
-        return jsonify({'error': 'Invalid login credentials'}), 401
-
-    def insert_recipe(self):
-        recipe = {
-            'user_id': session['user']['_id'],
-            'recipe_name': request.form.get('recipe_name').lower(),
-            'img_url': request.form.get('img_url'),
-            'ingredient_name': request.form.getlist('ingredient_name'),
-            'ingredient_amount': request.form.getlist('ingredient_amout'),
-            'unit': request.form.getlist('unit'),
-            'step_description': request.form.getlist('step_description')
-        }
-
-        recipes.insert_one(recipe)
-
-        return jsonify({'success': 'Recipe has been added'}), 200
-
-    def update_recipe(self, recipe_id):
-        recipe = {
-            'user_id': session['user']['_id'],
-            'recipe_name': request.form.get('recipe_name').lower(),
-            'img_url': request.form.get('img_url'),
-            'ingredient_name': request.form.getlist('ingredient_name'),
-            'ingredient_amount': request.form.getlist('ingredient_amout'),
-            'unit': request.form.getlist('unit'),
-            'step_description': request.form.getlist('step_description')
-        }
-
-        recipes.update({'_id': ObjectId(recipe_id)}, recipe)
-
-        return jsonify({'success': 'Recipe has been updated'}), 200
 
 # Database
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY')
-app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
+
+app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+app.secret_key = os.environ.get('SECRET_KEY')
+
 mongo = PyMongo(app)
-app.config['MONGO_DBNAME'] = os.getenv('MONGO_DBNAME')
-app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 
-users = mongo.db.user_login_system
-recipes = mongo.db.recipes
-
-
-# Decorators
-def login_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return f(*args, **kwargs)
-        else:
-            return redirect(url_for('home_page'))
-
-    return wrap
-
-
-def prevent_misuse(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return redirect(url_for('profile_page'))
-        else:
-            return f(*args, **kwargs)
-
-    return wrap
+user = mongo.db.user_login_system
 
 
 @app.route('/')
-@app.route('/home/')
-@prevent_misuse
+@app.route('/home')
 def home_page():
     return render_template('index.html')
 
 
-@app.route('/recipes/', methods=['GET', 'POST'])
+@app.route('/about')
+def about_page():
+    return render_template('about.html')
+
+
+@app.route("/contact_us", methods=['GET', 'POST'])
+def contact_page():
+    if request.method == 'POST':
+        flash(message="Thanks {}, we have recived your message!".format(
+            request.form.get("name")))
+    return render_template('contact.html', contact_page="Contact")
+
+
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        # check if username already exists in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("signup"))
+
+        signup = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(signup)
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
+        return redirect(url_for("profile", username=session["user"]))
+
+    return render_template("signup.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # check if username exists in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                        "profile", username=session["user"]))
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    # Remove user from session cookie
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
+
+
+@app.route('/recipes', methods=['GET', 'POST'])
 def recipes_page():
-    value_searched = request.form.get("search_value")
-    if value_searched:
-        cursor = recipes.aggregate([
-            {"$search": {"text": {"path": "recipe_name",
-                                  "query": value_searched},
-                         "highlight": {"path": "recipe_name"}}},
-            {"$project": {
-                "_id": 1,
-                "img_url": 1,
-                "recipe_name": 1,
-                "ingredient_name": 1,
-                "ingredient_amount": 1,
-                "unit": 1,
-                "step_description": 1,
-                "score": {"$meta": "searchScore"}}}])
-
-        return render_template('recipes.html', all_recipes=cursor)
-
+    recipes = mongo.db.Recipes
     return render_template('recipes.html', all_recipes=recipes.find())
 
 
 @app.route('/recipes/search', methods=['GET', 'POST'])
 def search_data():
+    recipes = mongo.db.Recipes
     query_text = request.form.get('search_value')
 
     if not query_text:
-        cursor = recipes.find()
+        cursor = recipes.get()
 
         list_cursor = list(cursor)
         json_data = dumps(list_cursor)
@@ -165,16 +136,16 @@ def search_data():
         return json_data, 200
 
     cursor = recipes.aggregate([
-        {"$search": {"text": {"path": "recipe_name", "query": query_text},
+        {"$search": {"text": {"path": "recipes_name", "query": "query_text"},
                      "highlight": {"path": "recipe_name"}}},
         {"$project": {
             "_id": 1,
             "img_url": 1,
             "recipe_name": 1,
-            "ingredient_name": 1,
-            "ingredient_amount": 1,
-            "unit": 1,
+            "ingredients": 1,
+            "preparation_time": 1,
             "step_description": 1,
+            "cooking_time": 1,
             "score": {"$meta": "searchScore"}}}])
 
     list_cursor = list(cursor)
@@ -192,108 +163,91 @@ def search_data():
     return json_data, 200
 
 
-@app.route('/about/')
-def about_page():
-    return render_template('about.html')
-
-
-@app.route('/contact_us/')
-def contact_page():
-    return render_template('contact.html')
-
-
-@app.route('/sign_up/')
-@prevent_misuse
-def signup_page():
-    return render_template('signup.html')
-
-
-@app.route('/user/signup', methods=['GET', 'POST'])
-@prevent_misuse
-def signup():
-    user = User()
-    return user.signup()
-
-
-@app.route('/login/')
-@prevent_misuse
-def login_page():
-    return render_template('login.html')
-
-
-@app.route('/user/login', methods=['POST'])
-@prevent_misuse
-def login():
-    user = User()
-    return user.login()
-
-
-@app.route('/profile_page/')
-@login_required
-def profile_page():
-    return render_template('profile.html',
-                           user_recipes=recipes.find({
-                               'user_id': session['user']['_id']}))
-
-
-@app.route('/profile_page/signout')
-@login_required
-def sign_out():
-    user = User()
-    return user.signout()
-
-
-@app.route('/add_recipe/')
-@login_required
+@app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
-    return render_template('add_recipe.html')
+    if request.method == "POST":
+        task = {
+            "recipe_name": request.form.get("recipe_name"),
+            "img_url": request.form.get("img_url"),
+            "ingredients": request.form.get("ingredients"),
+            "step_description": request.form.get("step_description"),
+            "cooking_time": request.form.get("cooking_time"),
+        }
+        mongo.db.tasks.insert_one(task)
+        flash("Recipe Successfully Added")
+        return redirect(url_for("add_recipe"))
 
-
-@app.route('/add_recipe/insert_recipe', methods=['GET', 'POST'])
-@login_required
-def insert_recipe():
-    user = User()
-    return user.insert_recipe()
+    categories = mongo.db.categories.find().sort("recipe_name", 1)
+    return render_template("add_recipe.html", categories=categories)
 
 
 @app.route('/edit_recipe/<recipe_id>')
-@login_required
 def edit_recipe(recipe_id):
-    recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
-    ingredients = zip(recipe['ingredient_name'],
-                      recipe['ingredient_amount'],
-                      recipe['unit'])
-    return render_template('edit_recipe.html',
-                           user_recipe=recipe,
-                           user_ingredient=ingredients)
+    if request.method == "POST":
+        submit = {
+            "recipe_name": request.form.get("recipe_name"),
+            "img_url": request.form.get("img_url"),
+            "ingredients": request.form.get("ingredients"),
+            "step_description": request.form.get("step_description"),
+            "cooking_time": request.form.get("cooking_time"),
+            "created_by": session["user"]
+        }
+        mongo.db.recipe.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe Successfully Updated")
+
+    recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipe_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template(
+        "edit_recipe.html", recipe=recipe, categories=categories)
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['GET', 'POST'])
-@login_required
 def update_recipe(recipe_id):
-    User().update_recipe(recipe_id)
+    user().update_recipes(recipe_id)
     return redirect(url_for('profile_page'))
 
 
-@app.route('/delete_recipe/<recipe_id>')
-@login_required
-def delete_recipe(recipe_id):
-    recipes.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('profile_page'))
+@app.route("/delete_recipe/<recipe_id>")
+def delete_task(task_id):
+    mongo.db.recipe.remove({"_id": ObjectId(task_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("profile_page"))
+
+
+@app.route("/get_categories")
+def get_categories():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template("categories.html", categories=categories)
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.insert_one(category)
+        flash("New Category Added")
+        return redirect(url_for("get_categories"))
+
+    return render_template("add_category.html")
 
 
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
+    recipes = mongo.db.Recipes
     recipe = recipes.find_one({'_id': ObjectId(recipe_id)})
-    ingredients = zip(recipe['ingredient_name'],
-                      recipe['ingredient_amount'],
-                      recipe['unit'])
+    ingredients = zip(recipe['ingredients'],
+                      recipe['preparation_time'],
+                      recipe['step_description'],
+                      recipe['cooking_time'])
 
-    return render_template('recipe.html', recipe=recipe,
+    return render_template('recipe.html', recipe=recipes,
                            ingredients=ingredients)
 
+
 if __name__ == "__main__":
-        app.run(
-                host=os.environ.get("IP", "0.0.0.0"),
-                port=int(os.environ.get("PORT", "5000")),
-                debug=True)
+    app.run(
+        host=os.environ.get("IP", "0.0.0.0"),
+        port=int(os.environ.get("PORT", "5000")),
+        debug=True)
